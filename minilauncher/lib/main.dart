@@ -5,6 +5,9 @@ import 'package:flutter/services.dart';
 import 'Pages/Home/Home.dart';
 import 'Pages/Settings/Settings.dart';
 
+/// Application list
+List apps = [];
+
 void main() async {
 
   /// Locks device orientation

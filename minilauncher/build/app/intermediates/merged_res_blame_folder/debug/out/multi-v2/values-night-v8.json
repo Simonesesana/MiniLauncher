@@ -4,7 +4,7 @@
             "outputFile": "com.example.minilauncher.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\simon\\Desktop\\Programmazione\\Flutter\\minilauncher\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\simon\\Desktop\\Programmazione\\Flutter\\minilauncher\\minilauncher\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

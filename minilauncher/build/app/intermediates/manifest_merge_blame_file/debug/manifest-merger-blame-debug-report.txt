@@ -13,11 +13,11 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:7:22-64
+15-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:7:5-66
+15-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:7:22-64
 16    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-16-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:3:5-77
-16-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:3:22-74
+16-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:3:5-77
+16-->C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:3:22-74
 17
 18    <application
 19        android:name="android.app.Application"

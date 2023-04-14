@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:4:5-36:19
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:4:5-36:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.6.0] C:\Users\simon\.gradle\caches\transforms-3\4ca28c4a71705f8a687c69dda140a277\transformed\core-1.6.0\AndroidManifest.xml:24:5-89
@@ -10,15 +10,15 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\si
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.6.0] C:\Users\simon\.gradle\caches\transforms-3\4ca28c4a71705f8a687c69dda140a277\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 	android:name
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-MERGED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-MERGED from [:path_provider_android] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:device_apps] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\build\device_apps\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+MERGED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+MERGED from [:path_provider_android] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:device_apps] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\build\device_apps\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\006d93cd422dbc43e89591147c2de572\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\simon\.gradle\caches\transforms-3\9354257804af8250f2ffb7c22e2892d5\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -36,35 +36,35 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\simon\.gradle\cache
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\simon\.gradle\caches\transforms-3\5abdc06e026f2f7b9b89c25dcd7a6d7e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\simon\.gradle\caches\transforms-3\282676124ae0776b5645a1cee909808d\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\simon\.gradle\caches\transforms-3\8965c941cf4bee4d72541b965c7c9d39\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:1:1-8:12
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:1:1-8:12
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:1:1-8:12
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:1:1-8:12
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:1:1-8:12
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:1:1-8:12
 	package
-		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:2:5-39
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
+		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:2:5-39
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:1-37:12
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:1:11-69
+		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.QUERY_ALL_PACKAGES
-ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:3:5-77
+ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:3:5-77
 	android:name
-		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml:3:22-74
+		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml:3:22-74
 uses-sdk
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-MERGED from [:path_provider_android] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:path_provider_android] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:device_apps] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\build\device_apps\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:device_apps] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\build\device_apps\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+MERGED from [:path_provider_android] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:device_apps] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\build\device_apps\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:device_apps] C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\build\device_apps\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\006d93cd422dbc43e89591147c2de572\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\006d93cd422dbc43e89591147c2de572\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
@@ -99,18 +99,18 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\simon\.gradl
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\simon\.gradle\caches\transforms-3\282676124ae0776b5645a1cee909808d\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\simon\.gradle\caches\transforms-3\8965c941cf4bee4d72541b965c7c9d39\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\simon\.gradle\caches\transforms-3\8965c941cf4bee4d72541b965c7c9d39\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
-INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:7:5-66
+ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:7:5-66
 	android:name
-		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\android\app\src\debug\AndroidManifest.xml:7:22-64
+		ADDED from C:\Users\simon\Desktop\Programmazione\Flutter\minilauncher\minilauncher\android\app\src\debug\AndroidManifest.xml:7:22-64
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\simon\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required
