@@ -20,6 +20,7 @@ dependencies:
   device_apps: ^2.2.0
   flutter_spinkit: ^5.1.0
   google_fonts: ^4.0.3
+  shared_preferences: ^2.1.0
 
 
 dev_dependencies:

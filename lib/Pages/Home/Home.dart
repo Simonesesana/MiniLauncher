@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: ListView.builder(
+                        child: !preferences.showOnlyFavouriteAppsOnHomeScreen ? ListView.builder(
                           itemCount: preferences.apps.length,
                           itemBuilder: (context, index){
                             return ApplicationItem(
@@ -50,6 +50,16 @@ class _HomeState extends State<Home> {
                                 preferences.apps[index].appName,
                                 preferences.apps[index].packageName,
                                 preferences.apps[index].icon
+                            );
+                          },
+                        ) : ListView.builder(
+                          itemCount: preferences.favouriteApps.length,
+                          itemBuilder: (context, index){
+                            return ApplicationItem(
+                                context,
+                                preferences.favouriteApps[index].appName,
+                                preferences.favouriteApps[index].packageName,
+                                preferences.favouriteApps[index].icon
                             );
                           },
                         ),

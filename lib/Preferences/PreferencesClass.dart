@@ -1,12 +1,12 @@
 class PreferencesClass {
 
   /// List of all the applications
-  late List apps;
+  List apps = [];
   /// List of favourite applications
-  late List favouriteApplications;
+  List favouriteApps = [];
 
 
   /// Settings variables
-  late bool displayAllAppsOnHomeScreen;
+  late bool showOnlyFavouriteAppsOnHomeScreen;
 
 }
