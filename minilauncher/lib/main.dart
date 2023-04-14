@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:minilauncher/Preferences/PreferencesClass.dart';
 
 /// Pages import
 import 'Pages/Home/Home.dart';
+import 'Pages/Loading/Loading.dart';
 import 'Pages/Settings/Settings.dart';
 
 /// Application list
 List apps = [];
+
+/// Preferences object
+PreferencesClass preferences = PreferencesClass();
 
 void main() async {
 
@@ -34,11 +39,12 @@ class MyApp extends StatelessWidget {
       title: 'MiniLauncher',
 
       /// Initial route
-      initialRoute: '/home',
+      initialRoute: '/loading',
 
       /// List of al the app pages
       routes: {
         '/home': (context) => const Home(),
+        '/loading': (context) => const Loading(),
         '/settings': (context) => const Settings()
       },
 

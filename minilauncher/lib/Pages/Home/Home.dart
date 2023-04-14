@@ -1,10 +1,8 @@
+import '../../main.dart';
 import 'package:flutter/material.dart';
 import 'package:minilauncher/Themes/Theme.dart';
 import 'package:minilauncher/Pages/Home/Items/HomeOverlay.dart';
 import 'package:minilauncher/Pages/Home/Items/ApplicationItem.dart';
-
-import '../../main.dart';
-import '../Loading/Loading.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

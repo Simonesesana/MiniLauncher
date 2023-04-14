@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Themes/Theme.dart';
+import 'package:minilauncher/main.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +44,14 @@ class _SettingsState extends State<Settings> {
                   color: selectedTheme.homeCardColor.withOpacity(0.15),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Switch(
+                    value: preferences.displayAllAppsOnHomeScreen,
+                    onChanged: (value) {
+                      setState(() {
+                        preferences.displayAllAppsOnHomeScreen = value;
+                      });
+                    },
                   ),
                 )
 
