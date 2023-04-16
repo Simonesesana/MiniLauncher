@@ -6,7 +6,7 @@ import 'package:minilauncher/Preferences/PreferencesClass.dart';
 import 'Pages/Home/Home.dart';
 import 'Pages/Loading/Loading.dart';
 import 'Pages/Settings/Settings.dart';
-import 'Pages/Settings/SelectFavouriteApps.dart';
+import 'Pages/Settings/SelectFavouriteApps/SelectFavouriteApps.dart';
 
 /// Preferences object
 PreferencesClass preferences = PreferencesClass();

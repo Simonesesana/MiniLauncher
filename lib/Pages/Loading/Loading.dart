@@ -42,7 +42,7 @@ class _LoadingState extends State<Loading> {
         /// Loading spinkit
         SpinKitRing(
           lineWidth: 1,
-          color: selectedTheme.textColor,
+          color: preferences.selectedTheme.textColor,
           size: MediaQuery.of(context).size.width / 10,
         ),
 
@@ -56,7 +56,7 @@ class _LoadingState extends State<Loading> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunito(
                     height: 1.2,
-                    color: selectedTheme.textColor,
+                    color: preferences.selectedTheme.textColor,
                     fontWeight: FontWeight.w300,
                     decoration: TextDecoration.none,
                     fontSize: MediaQuery.of(context).size.width / 20

@@ -29,5 +29,13 @@ Theme darkTheme = Theme(
 );
 
 
-/// Selected theme
-Theme selectedTheme = darkTheme;
+/// Light theme
+Theme lightTheme = Theme (
+
+  textColor: Colors.black,
+  primaryColor: Colors.white,
+
+  /// Home
+  homeCardColor: Colors.grey
+
+);

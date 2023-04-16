@@ -12,6 +12,9 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
 
+  /// Selected theme
+  String? selectedTheme = "dark";
+
   /// Indicates if the home page must be recharged while exiting
   /// the settings
   bool homePageHasChanged = false;
@@ -19,6 +22,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
 
+    /// Screen width
     double screenWidth = MediaQuery.of(context).size.width;
 
     return WillPopScope(
@@ -35,30 +39,31 @@ class _SettingsState extends State<Settings> {
 
       child: Scaffold(
 
-        backgroundColor: selectedTheme.primaryColor,
+        backgroundColor: preferences.selectedTheme.primaryColor,
 
         /// Appbar
         appBar: AppBar(
 
+          elevation: 0,
           centerTitle: true,
-          backgroundColor: selectedTheme.textColor.withOpacity(0.1),
+          backgroundColor: preferences.selectedTheme.textColor.withOpacity(0.1),
 
           title: Text(
             "Settings",
             style: GoogleFonts.montserrat(
                 letterSpacing: 2,
                 fontWeight: FontWeight.w400,
-                color: selectedTheme.textColor,
+                color: preferences.selectedTheme.textColor,
                 fontSize: MediaQuery.of(context).size.width / 20
             ),
           ),
 
           /// Back button
           leading: IconButton(
-            color: selectedTheme.textColor,
+            color: preferences.selectedTheme.textColor,
             icon: Icon(
               Icons.arrow_back_ios,
-              color: selectedTheme.textColor,
+              color: preferences.selectedTheme.textColor,
               size: 17,
             ),
             onPressed: (){
@@ -84,26 +89,82 @@ class _SettingsState extends State<Settings> {
 
                 children: [
 
-                  /// Home screen
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 10
-                    ),
-                    child: Text(
-                      "Home Screen",
-                      style: GoogleFonts.montserrat(
-                          letterSpacing: 1,
-                          color: selectedTheme.textColor,
-                          fontSize: screenWidth / 17
-                      ),
-                    ),
-                  ),
+                  /// Theme
+                  settingsTitleTextLabel("Theme", screenWidth),
 
                   SizedBox(
                     width: screenWidth,
                     child: Card(
                       elevation: 0,
-                      color: selectedTheme.homeCardColor.withOpacity(0.15),
+                      color: preferences.selectedTheme.homeCardColor.withOpacity(0.15),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+
+                            /// Select theme
+                            settingsTextLabel("Select theme", screenWidth),
+
+                            /// Light
+                            Row(
+                              children: [
+                                Radio<String> (
+                                  value: "light",
+                                  groupValue: selectedTheme,
+                                  onChanged: (String? value){
+                                    setState(() {
+                                      selectedTheme = value;
+                                      homePageHasChanged = true;
+                                      preferences.selectedTheme = lightTheme;
+                                    });
+                                  },
+                                  activeColor: preferences.selectedTheme.textColor,
+                                ),
+                                settingsTextLabel("Light", screenWidth)
+                              ],
+                            ),
+
+                            /// Dark
+                            Row(
+                              children: [
+                                Radio<String> (
+                                  value: "dark",
+                                  groupValue: selectedTheme,
+                                  onChanged: (String? value){
+                                    setState(() {
+                                      selectedTheme = value;
+                                      homePageHasChanged = true;
+                                      preferences.selectedTheme = darkTheme;
+                                    });
+                                  },
+                                  activeColor: preferences.selectedTheme.textColor,
+                                ),
+                                settingsTextLabel("Dark", screenWidth)
+                              ],
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  /// Home screen
+                  settingsTitleTextLabel("Home Screen", screenWidth),
+
+                  SizedBox(
+                    width: screenWidth,
+                    child: Card(
+                      elevation: 0,
+                      color: preferences.selectedTheme.homeCardColor.withOpacity(0.15),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
                       ),
@@ -120,10 +181,10 @@ class _SettingsState extends State<Settings> {
                                 settingsTextLabel("Select favourite apps", screenWidth),
 
                                 IconButton(
-                                  color: selectedTheme.textColor,
+                                  color: preferences.selectedTheme.textColor,
                                   icon: Icon(
                                     Icons.arrow_forward_ios,
-                                    color: selectedTheme.textColor,
+                                    color: preferences.selectedTheme.textColor,
                                     size: 17,
                                   ),
                                   onPressed: (){
@@ -146,7 +207,7 @@ class _SettingsState extends State<Settings> {
                                 settingsTextLabel("Show only favourite apps on home screen", screenWidth),
                                 Switch(
                                   value: preferences.showOnlyFavouriteAppsOnHomeScreen,
-                                  activeColor: selectedTheme.textColor,
+                                  activeColor: preferences.selectedTheme.textColor,
                                   onChanged: (value) {
                                     setState(() {
                                       homePageHasChanged = true;
@@ -184,7 +245,7 @@ Padding settingsDivider (double screenWidth) {
         right: screenWidth / 20
     ),
     child: Divider(
-      color: selectedTheme.textColor,
+      color: preferences.selectedTheme.textColor,
     ),
   );
 }
@@ -199,8 +260,26 @@ SizedBox settingsTextLabel (String text, double screenWidth) {
       textAlign: TextAlign.justify,
       style: GoogleFonts.montserrat(
           letterSpacing: 1,
-          color: selectedTheme.textColor,
+          color: preferences.selectedTheme.textColor,
           fontSize: screenWidth / 30
+      ),
+    ),
+  );
+}
+
+/// Settings title text label
+Padding settingsTitleTextLabel (String text, double screenWidth) {
+  return Padding(
+    padding: const EdgeInsets.only(
+      bottom: 10,
+      left: 3
+    ),
+    child: Text(
+      text,
+      style: GoogleFonts.montserrat(
+          letterSpacing: 1,
+          color: preferences.selectedTheme.textColor,
+          fontSize: screenWidth / 17
       ),
     ),
   );

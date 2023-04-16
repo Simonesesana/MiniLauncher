@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Themes/Theme.dart';
+import 'package:minilauncher/main.dart';
 
 GestureDetector ApplicationItem(
   BuildContext context,
@@ -40,7 +41,7 @@ GestureDetector ApplicationItem(
             appName,
             style: GoogleFonts.montserrat(
               letterSpacing: 1.5,
-              color: selectedTheme.textColor,
+              color: preferences.selectedTheme.textColor,
               fontSize: MediaQuery.of(context).size.width / 30,
             ),
           ),

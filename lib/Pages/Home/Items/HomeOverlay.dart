@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Themes/Theme.dart';
 
+import '../../../main.dart';
+
 class HomeOverlay extends StatefulWidget {
   const HomeOverlay({Key? key}) : super(key: key);
 
@@ -34,7 +36,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
                 "${DateTime.now().hour}:${DateTime.now().minute}",
                 style: GoogleFonts.montserrat(
                   letterSpacing: 5,
-                  color: selectedTheme.textColor,
+                  color: preferences.selectedTheme.textColor,
                   fontSize: MediaQuery.of(context).size.width / 10
                 ),
               ),
@@ -46,7 +48,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
                 "${DateTime.now().year}",
                 style: GoogleFonts.montserrat(
                   letterSpacing: 2,
-                  color: selectedTheme.textColor,
+                  color: preferences.selectedTheme.textColor,
                   fontSize: MediaQuery.of(context).size.width / 22
                 ),
               )
@@ -69,13 +71,13 @@ class _HomeOverlayState extends State<HomeOverlay> {
                       color: Colors.transparent,
                       border: Border.all(
                           width: 1,
-                          color: selectedTheme.textColor
+                          color: preferences.selectedTheme.textColor
                       ),
                       borderRadius: BorderRadius.circular(100)
                   ),
                   child: Icon(
                     Icons.keyboard_arrow_up,
-                    color: selectedTheme.textColor,
+                    color: preferences.selectedTheme.textColor,
                   ),
                 ),
               ),
@@ -93,13 +95,13 @@ class _HomeOverlayState extends State<HomeOverlay> {
                     color: Colors.transparent,
                     border: Border.all(
                       width: 1,
-                      color: selectedTheme.textColor
+                      color: preferences.selectedTheme.textColor
                     ),
                     borderRadius: BorderRadius.circular(100)
                   ),
                   child: Icon(
                     Icons.settings,
-                    color: selectedTheme.textColor,
+                    color: preferences.selectedTheme.textColor,
                   ),
                 ),
               ),

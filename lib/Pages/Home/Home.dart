@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
 
-          backgroundColor: selectedTheme.primaryColor,
+          backgroundColor: preferences.selectedTheme.primaryColor,
 
           /// App list
           body: Stack(
@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
                 child: Center(
                     child: Card(
                       elevation: 0,
-                      color: selectedTheme.homeCardColor.withOpacity(0.15),
+                      color: preferences.selectedTheme.homeCardColor.withOpacity(0.15),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)
                       ),
