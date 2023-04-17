@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../Home/Items/ApplicationItem.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Preferences/PreferencesClass.dart';
+import 'package:minilauncher/GlobalProperties/TextFieldDecoration.dart';
 
 class SelectFavouriteApps extends StatefulWidget {
   const SelectFavouriteApps({Key? key}) : super(key: key);
@@ -13,6 +14,10 @@ class SelectFavouriteApps extends StatefulWidget {
 
 class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
 
+  /// Search bar text
+  String searchText = "";
+
+  /// This function determines if the app is set as favourite
   bool isFavourite(String packageName) {
     for (var element in preferences.favouriteApps) {
       if(element.packageName == packageName) {
@@ -22,8 +27,25 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
     return false;
   }
 
+  /// This function determines if the app is being searched in the search bar
+  bool isSearched(String appName) {
+
+    if(searchText==""){
+      return true;
+    }
+
+    if(appName.toLowerCase().contains(searchText.toLowerCase())){
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    /// Screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
 
       backgroundColor: preferences.selectedTheme.primaryColor,
@@ -41,7 +63,7 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
               letterSpacing: 2,
               fontWeight: FontWeight.w400,
               color: preferences.selectedTheme.textColor,
-              fontSize: MediaQuery.of(context).size.width / 20
+              fontSize: screenWidth / 20
           ),
         ),
 
@@ -50,8 +72,8 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
           color: preferences.selectedTheme.textColor,
           icon: Icon(
             Icons.arrow_back_ios,
-            color: preferences.selectedTheme.textColor,
             size: 17,
+            color: preferences.selectedTheme.textColor,
           ),
           onPressed: (){
             Navigator.pop(context);
@@ -62,48 +84,83 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
       /// App list
       body: Padding(
         padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-        child: ListView.builder(
-          itemCount: preferences.apps.length,
-          itemBuilder: (context, index){
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+        child: Column(
+          
+          children: [
 
-                /// App Item
-                ApplicationItem(
-                    context,
-                    preferences.apps[index].appName,
-                    preferences.apps[index].packageName,
-                    preferences.apps[index].icon
-                ),
-
-                /// Favourite button
-                IconButton(
-                  onPressed: (){
-
-                    /// Adds or removes app from favourite
-                    if(isFavourite(preferences.apps[index].packageName)) {
-                      PreferencesClass.removeFavouriteApp(preferences.apps[index].packageName);
-                    } else {
-                      PreferencesClass.addFavouriteApp(preferences.apps[index].packageName);
-                    }
-
-                    /// Updates interface
-                    setState(() {});
-
+            /// Text field
+            Padding(
+              padding: const EdgeInsets.only(
+                bottom: 5
+              ),
+              child: GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: TextField(
+                  onChanged: (String value) {
+                    setState(() {
+                      searchText = value;
+                    });
                   },
-                  icon: !isFavourite(preferences.apps[index].packageName) ? Icon(
-                    Icons.favorite_border_outlined,
-                    color: preferences.selectedTheme.textColor
-                  ) : Icon(
-                      Icons.favorite,
-                      color: preferences.selectedTheme.textColor
-                  ),
-                )
 
-              ],
-            );
-          },
+                  style: GoogleFonts.montserrat(
+                    color: preferences.selectedTheme.textColor,
+                    fontSize: MediaQuery.of(context).size.width / 25
+                  ),
+
+                  decoration: textFieldDecoration(screenWidth),
+                ),
+              ),
+            ),
+
+            /// App list
+            Flexible(
+              child: ListView.builder(
+                itemCount: preferences.apps.length,
+                itemBuilder: (context, index){
+                  return isSearched(preferences.apps[index].appName)
+                      ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      /// App Item
+                      ApplicationItem(
+                          context,
+                          preferences.apps[index].appName,
+                          preferences.apps[index].packageName,
+                          preferences.apps[index].icon
+                      ),
+
+                      /// Favourite button
+                      IconButton(
+                        onPressed: (){
+
+                          /// Adds or removes app from favourite
+                          if(isFavourite(preferences.apps[index].packageName)) {
+                            PreferencesClass.removeFavouriteApp(preferences.apps[index].packageName);
+                          } else {
+                            PreferencesClass.addFavouriteApp(preferences.apps[index].packageName);
+                          }
+
+                          /// Updates interface
+                          setState(() {});
+
+                        },
+                        icon: !isFavourite(preferences.apps[index].packageName) ? Icon(
+                          Icons.favorite_border_outlined,
+                          color: preferences.selectedTheme.textColor
+                        ) : Icon(
+                            Icons.favorite,
+                            color: preferences.selectedTheme.textColor
+                        ),
+                      )
+
+                    ],
+                  )
+                      : const SizedBox();
+                },
+              ),
+            ),
+          ],
         ),
       ),
 
