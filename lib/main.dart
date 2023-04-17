@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
 import 'package:minilauncher/Preferences/PreferencesClass.dart';
 
 /// Pages import
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const Home(),
         '/loading': (context) => const Loading(),
         '/settings': (context) => const Settings(),
+        '/home_drawer': (context) => const HomeDrawer(),
         '/select_favourite_apps': (context) => const SelectFavouriteApps(),
       },
 

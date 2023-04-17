@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import '../../../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:minilauncher/Themes/Theme.dart';
-
-import '../../../main.dart';
 
 class HomeOverlay extends StatefulWidget {
   const HomeOverlay({Key? key}) : super(key: key);
@@ -63,7 +60,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
               /// App Drawer
               GestureDetector(
                 onTap: (){
-                  print("drawer");
+                  Navigator.pushNamed(context, '/home_drawer');
                 },
                 child: Container(
                   padding: const EdgeInsets.all(8),
