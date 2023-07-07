@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:minilauncher/Themes/Theme.dart';
-import 'package:minilauncher/main.dart';
 
 GestureDetector ApplicationItem(
   BuildContext context,
@@ -20,7 +20,8 @@ GestureDetector ApplicationItem(
     child: Padding(
       padding: const EdgeInsets.only(
         top: 5,
-        bottom: 5
+        left: 7,
+        bottom: 5,
       ),
 
       child: Row(

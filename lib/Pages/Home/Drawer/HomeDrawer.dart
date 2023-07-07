@@ -1,3 +1,6 @@
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+
 import '../../../main.dart';
 import 'package:flutter/material.dart';
 import '../Items/ApplicationItem.dart';
@@ -45,6 +48,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           child: Column(
             children: [
 
+              /// Search bar
               Padding(
                 padding: const EdgeInsets.only(
                     bottom: 5
@@ -66,20 +70,41 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     decoration: textFieldDecoration(screenWidth),
                   ),
                 ),
+              ).animate().fade(
+                duration: const Duration(seconds: 1)
               ),
 
               /// App List
               Flexible(
-                child: ListView.builder(
-                  itemCount: preferences.apps.length,
-                  itemBuilder: (context, index){
-                    return isSearched(preferences.apps[index].appName) ? ApplicationItem(
-                          context,
-                          preferences.apps[index].appName,
-                          preferences.apps[index].packageName,
-                          preferences.apps[index].icon
-                      ) : const SizedBox();
-                  },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10
+                  ),
+                  child: AnimationLimiter(
+                    child: ListView.builder(
+                      itemCount: preferences.apps.length,
+                      itemBuilder: (context, index){
+                        try{
+                          if(preferences.apps[index].appName[0].toString().toUpperCase() != preferences.apps[index-1].appName[0].toString().toUpperCase()) {
+                            return ApplicationItemWithLetter(index);
+                          }
+                        } catch(e) {
+                          return  ApplicationItemWithLetter(index);
+                        }
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          child: FadeInAnimation(
+                              child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                                  context,
+                                  preferences.apps[index].appName,
+                                  preferences.apps[index].packageName,
+                                  preferences.apps[index].icon
+                              ) : const SizedBox()
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -89,4 +114,58 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
     );
   }
+
+  ApplicationItemWithLetter (
+      int index
+      ) {
+    return searchText == "" ? Padding(
+      padding: const EdgeInsets.only(
+        top: 10,
+        bottom: 5
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AnimationConfiguration.staggeredList(
+            position: index,
+            child: FadeInAnimation(
+              child: Text(
+                  preferences.apps[index].appName[0].toString().toUpperCase(),
+                  style: GoogleFonts.montserrat(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: preferences.selectedTheme.textColor
+                  )
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          AnimationConfiguration.staggeredList(
+            position: index,
+            child: FadeInAnimation(
+                child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                    context,
+                    preferences.apps[index].appName,
+                    preferences.apps[index].packageName,
+                    preferences.apps[index].icon
+                ) : const SizedBox()
+            ),
+          )
+        ],
+      ),
+    ) : AnimationConfiguration.staggeredList(
+      position: index,
+      child: FadeInAnimation(
+          child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+              context,
+              preferences.apps[index].appName,
+              preferences.apps[index].packageName,
+              preferences.apps[index].icon
+          ) : const SizedBox()
+      ),
+    );
+  }
+  
 }

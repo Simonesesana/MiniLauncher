@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Themes/Theme.dart';
 import 'package:minilauncher/main.dart';
 
@@ -18,6 +19,19 @@ class _SettingsState extends State<Settings> {
   /// Indicates if the home page must be recharged while exiting
   /// the settings
   bool homePageHasChanged = false;
+
+  void initState() {
+    super.initState();
+    if(preferences.selectedTheme == lightTheme) {
+      setState(() {
+        selectedTheme = "light";
+      });
+    } else if(preferences.selectedTheme == darkTheme) {
+      setState(() {
+        selectedTheme = "dark";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +133,7 @@ class _SettingsState extends State<Settings> {
                                     setState(() {
                                       selectedTheme = value;
                                       homePageHasChanged = true;
+                                      setString("app_theme", "light");
                                       preferences.selectedTheme = lightTheme;
                                     });
                                   },
@@ -138,6 +153,7 @@ class _SettingsState extends State<Settings> {
                                     setState(() {
                                       selectedTheme = value;
                                       homePageHasChanged = true;
+                                      setString("app_theme", "dark");
                                       preferences.selectedTheme = darkTheme;
                                     });
                                   },
