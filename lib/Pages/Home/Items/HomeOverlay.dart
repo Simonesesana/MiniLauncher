@@ -1,3 +1,7 @@
+import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
+import 'package:minilauncher/Pages/Settings/Settings.dart';
+import 'package:page_transition/page_transition.dart';
+
 import '../../../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +56,6 @@ class _HomeOverlayState extends State<HomeOverlay> {
             ],
           ),
 
-          /// Settings button
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -60,7 +63,13 @@ class _HomeOverlayState extends State<HomeOverlay> {
               /// App Drawer
               GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, '/home_drawer');
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      child: const HomeDrawer(),
+                      type: PageTransitionType.fade
+                    )
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(8),
@@ -84,7 +93,13 @@ class _HomeOverlayState extends State<HomeOverlay> {
               /// Settings
               GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, '/settings');
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          child: const Settings(),
+                          type: PageTransitionType.fade
+                      )
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(8),

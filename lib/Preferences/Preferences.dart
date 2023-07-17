@@ -28,7 +28,7 @@ Future<void> setStringList(String key, List<String> value) async {
 /// ////////////////////////////////////////////////////////////////////////////
 
 
-/// STRING LIS
+/// STRING LIST
 /// ////////////////////////////////////////////////////////////////////////////
 /// Get string
 Future<String> getString(String key) async {
@@ -51,6 +51,34 @@ Future<void> setString(String key, String value) async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString(key, value);
+
+}
+/// ////////////////////////////////////////////////////////////////////////////
+
+
+/// BOOL
+/// ////////////////////////////////////////////////////////////////////////////
+/// Get bool
+Future<bool> getBool(String key) async {
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  bool? value = true;
+  value = prefs.getBool(key);
+
+  if(value != null ) {
+    return value;
+  } else {
+    return true;
+  }
+
+}
+
+/// Set string list
+Future<void> setBool(String key, bool value) async {
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setBool(key, value);
 
 }
 /// ////////////////////////////////////////////////////////////////////////////

@@ -7,6 +7,8 @@ import 'package:device_apps/device_apps.dart';
 /// Function which initializes the launcher
 Future<void> initializeLauncher () async {
 
+  // Fetches settings preferences
+  await fetchSettingsPreferences();
 
   // Fetches app list
   await fetchAppList();
@@ -20,8 +22,18 @@ Future<void> initializeLauncher () async {
 
 
 
+/// Fetches settings preferences
+Future<void> fetchSettingsPreferences () async {
+
+  bool _showOnlyFavouriteAppsOnHomeScreen = await getBool("showOnlyFavouriteAppsOnHomeScreen");
+  preferences.showOnlyFavouriteAppsOnHomeScreen = _showOnlyFavouriteAppsOnHomeScreen;
+
+}
+
+
 /// Fetches app list
 Future<void> fetchAppList() async {
+
   /// Retrieves the app list
   preferences.apps = await DeviceApps.getInstalledApplications(
     includeAppIcons: true,

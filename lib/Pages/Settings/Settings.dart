@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Pages/Home/Home.dart';
+import 'package:minilauncher/Pages/Settings/SelectFavouriteApps/SelectFavouriteApps.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Themes/Theme.dart';
 import 'package:minilauncher/main.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -44,7 +47,13 @@ class _SettingsState extends State<Settings> {
       /// Prevents the settings screen from closing without loosing the changes
       onWillPop: () async {
         if(homePageHasChanged){
-          Navigator.pushReplacementNamed(context, '/home');
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  child: const Home(),
+                  type: PageTransitionType.fade
+              )
+          );
         } else {
           Navigator.pop(context);
         }
@@ -82,7 +91,13 @@ class _SettingsState extends State<Settings> {
             ),
             onPressed: (){
               if(homePageHasChanged){
-                Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        child: const Home(),
+                        type: PageTransitionType.fade
+                    )
+                );
               } else {
                 Navigator.pop(context);
               }
@@ -205,7 +220,13 @@ class _SettingsState extends State<Settings> {
                                   ),
                                   onPressed: (){
                                     homePageHasChanged = true;
-                                    Navigator.pushNamed(context, '/select_favourite_apps');
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            child: const SelectFavouriteApps(),
+                                            type: PageTransitionType.fade
+                                        )
+                                    );
                                   },
                                 ),
 
@@ -226,7 +247,8 @@ class _SettingsState extends State<Settings> {
                                   activeColor: preferences.selectedTheme.textColor,
                                   onChanged: (value) {
                                     setState(() {
-                                      homePageHasChanged = true;
+                                      homePageHasChanged = true;;
+                                      setBool("showOnlyFavouriteAppsOnHomeScreen", value);
                                       preferences.showOnlyFavouriteAppsOnHomeScreen = value;
                                     });
                                   },

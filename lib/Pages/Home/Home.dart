@@ -1,6 +1,5 @@
 import '../../main.dart';
 import 'package:flutter/material.dart';
-import 'package:minilauncher/Themes/Theme.dart';
 import 'package:minilauncher/Pages/Home/Items/HomeOverlay.dart';
 import 'package:minilauncher/Pages/Home/Items/ApplicationItem.dart';
 
@@ -52,16 +51,19 @@ class _HomeState extends State<Home> {
                                 preferences.apps[index].icon
                             );
                           },
-                        ) : ListView.builder(
-                          itemCount: preferences.favouriteApps.length,
-                          itemBuilder: (context, index){
-                            return ApplicationItem(
-                                context,
-                                preferences.favouriteApps[index].appName,
-                                preferences.favouriteApps[index].packageName,
-                                preferences.favouriteApps[index].icon
-                            );
-                          },
+                        ) : Center(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: preferences.favouriteApps.length,
+                            itemBuilder: (context, index){
+                              return ApplicationItem(
+                                  context,
+                                  preferences.favouriteApps[index].appName,
+                                  preferences.favouriteApps[index].packageName,
+                                  preferences.favouriteApps[index].icon
+                              );
+                            },
+                          ),
                         ),
                       ),
                     )
