@@ -91,6 +91,7 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
             /// Text field
             Padding(
               padding: const EdgeInsets.only(
+                top: 10,
                 bottom: 5
               ),
               child: GestureDetector(

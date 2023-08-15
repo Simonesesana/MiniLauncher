@@ -14,64 +14,72 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: SafeArea(
+        child: Scaffold(
 
-          backgroundColor: preferences.selectedTheme.primaryColor,
+            backgroundColor: preferences.selectedTheme.primaryColor,
 
-          /// App list
-          body: Stack(
-            children: [
+            /// App list
+            body: Stack(
+              children: [
 
-              /// Home overlay
-              const HomeOverlay(),
+                /// Home overlay
+                const HomeOverlay(),
 
-              /// App Drawer
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height / 3,
-                    horizontal: MediaQuery.of(context).size.width / 30
-                ),
-                child: Center(
-                    child: Card(
-                      elevation: 0,
-                      color: preferences.selectedTheme.homeCardColor.withOpacity(0.15),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: !preferences.showOnlyFavouriteAppsOnHomeScreen ? ListView.builder(
-                          itemCount: preferences.apps.length,
-                          itemBuilder: (context, index){
-                            return ApplicationItem(
-                                context,
-                                preferences.apps[index].appName,
-                                preferences.apps[index].packageName,
-                                preferences.apps[index].icon
-                            );
-                          },
-                        ) : Center(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: preferences.favouriteApps.length,
+                /// App Drawer
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height / 4,
+                      horizontal: MediaQuery.of(context).size.width / 30
+                  ),
+                  child: Center(
+                      child: Card(
+                        elevation: 0,
+                        color: preferences.showBackgroundOnHomeScreen
+                         ? preferences.selectedTheme.homeCardColor.withOpacity(0.15)
+                         : Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                          child: !preferences.showOnlyFavouriteAppsOnHomeScreen ? ListView.builder(
+                            itemCount: preferences.apps.length,
                             itemBuilder: (context, index){
                               return ApplicationItem(
                                   context,
-                                  preferences.favouriteApps[index].appName,
-                                  preferences.favouriteApps[index].packageName,
-                                  preferences.favouriteApps[index].icon
+                                  preferences.apps[index].appName,
+                                  preferences.apps[index].packageName,
+                                  preferences.apps[index].icon
                               );
                             },
+                          ) : Center(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: preferences.favouriteApps.length,
+                              itemBuilder: (context, index){
+                                return ApplicationItem(
+                                    context,
+                                    preferences.favouriteApps[index].appName,
+                                    preferences.favouriteApps[index].packageName,
+                                    preferences.favouriteApps[index].icon
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                ),
-              )
+                      )
+                  ),
+                )
 
-            ],
-          )
+              ],
+            )
+
+        ),
       ),
     );
   }

@@ -14,6 +14,7 @@ class PreferencesClass {
 
 
   /// Settings variables
+  late bool showBackgroundOnHomeScreen;
   late bool showOnlyFavouriteAppsOnHomeScreen;
 
   /// Sets an app as favourite
@@ -55,6 +56,5 @@ class PreferencesClass {
     setStringList("favourite_apps", favouritePackages);
 
   }
-
 
 }

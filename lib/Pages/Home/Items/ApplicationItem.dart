@@ -12,7 +12,6 @@ ApplicationItem(
   return GestureDetector(
 
     onTap: (){
-      print("eladio");
       /// Opens the application
       DeviceApps.openApp(packageName);
     },
@@ -31,21 +30,22 @@ ApplicationItem(
 
             /// App icon
             Image(
-              width: 30,
+              width: 40,
               image: MemoryImage(
                 icon
               ),
             ),
 
-            const SizedBox(width: 5),
+            const SizedBox(width: 10),
 
             /// App text
             Text(
               appName,
               style: GoogleFonts.montserrat(
                 letterSpacing: 1.5,
+                fontWeight: FontWeight.w500,
                 color: preferences.selectedTheme.textColor,
-                fontSize: MediaQuery.of(context).size.width / 30,
+                fontSize: MediaQuery.of(context).size.width / 27,
               ),
             ),
           ],

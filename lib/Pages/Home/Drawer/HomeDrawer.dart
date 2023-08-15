@@ -51,6 +51,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               /// Search bar
               Padding(
                 padding: const EdgeInsets.only(
+                    top: 10,
                     bottom: 5
                 ),
                 child: GestureDetector(

@@ -16,8 +16,6 @@ Future<void> initializeLauncher () async {
   // Retrieves the app theme
   await fetchAppTheme();
 
-  preferences.showOnlyFavouriteAppsOnHomeScreen = true;
-
 }
 
 
@@ -27,6 +25,10 @@ Future<void> fetchSettingsPreferences () async {
 
   bool _showOnlyFavouriteAppsOnHomeScreen = await getBool("showOnlyFavouriteAppsOnHomeScreen");
   preferences.showOnlyFavouriteAppsOnHomeScreen = _showOnlyFavouriteAppsOnHomeScreen;
+
+
+  bool _showBackgroundOnHomeScreen = await getBool("showBackgroundOnHomeScreen");
+  preferences.showBackgroundOnHomeScreen = _showBackgroundOnHomeScreen;
 
 }
 
