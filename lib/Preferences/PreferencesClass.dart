@@ -14,6 +14,7 @@ class PreferencesClass {
 
 
   /// Settings variables
+  late bool showSecondsOnClock;
   late bool showBackgroundOnHomeScreen;
   late bool showOnlyFavouriteAppsOnHomeScreen;
 

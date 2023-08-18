@@ -30,6 +30,9 @@ Future<void> fetchSettingsPreferences () async {
   bool _showBackgroundOnHomeScreen = await getBool("showBackgroundOnHomeScreen");
   preferences.showBackgroundOnHomeScreen = _showBackgroundOnHomeScreen;
 
+  bool _showSecondsOnClock = await getBool("showSecondsOnClock");
+  preferences.showSecondsOnClock = _showSecondsOnClock;
+
 }
 
 

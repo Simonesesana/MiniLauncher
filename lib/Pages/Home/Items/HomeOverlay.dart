@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
 import 'package:minilauncher/Pages/Settings/Settings.dart';
 import 'package:page_transition/page_transition.dart';
@@ -14,7 +17,29 @@ class HomeOverlay extends StatefulWidget {
 }
 
 class _HomeOverlayState extends State<HomeOverlay> {
+
+  // Timer
+  late Timer dateTimer;
+
+  // Current date
+  DateTime currentDateTime = DateTime.now();
+
+  void updateDate() {
+    dateTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        currentDateTime = DateTime.now();
+      });
+    });
+  }
+
   @override
+  void initState() {
+    updateDate();
+    super.initState();
+  }
+
+  @override
+
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -34,7 +59,9 @@ class _HomeOverlayState extends State<HomeOverlay> {
             children: [
               /// Time
               Text(
-                "${DateTime.now().hour}:${DateTime.now().minute}",
+                "${currentDateTime.hour.toString().padLeft(2, "0")}"
+                ":${currentDateTime.minute.toString().padLeft(2, "0")}"
+                "${preferences.showSecondsOnClock ? ":${currentDateTime.second.toString().padLeft(2, "0")}" : ""}",
                 style: GoogleFonts.montserrat(
                   letterSpacing: 5,
                   color: preferences.selectedTheme.textColor,
@@ -44,9 +71,9 @@ class _HomeOverlayState extends State<HomeOverlay> {
 
               /// Date
               Text(
-                "${DateTime.now().day.toString().padLeft(2, "0")}/"
-                "${DateTime.now().month.toString().padLeft(2, "0")}/"
-                "${DateTime.now().year}",
+                "${currentDateTime.day.toString().padLeft(2, "0")}/"
+                "${currentDateTime.month.toString().padLeft(2, "0")}/"
+                "${currentDateTime.year}",
                 style: GoogleFonts.montserrat(
                   letterSpacing: 2,
                   color: preferences.selectedTheme.textColor,

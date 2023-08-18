@@ -48,7 +48,9 @@ class _HomeState extends State<Home> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                           child: !preferences.showOnlyFavouriteAppsOnHomeScreen ? ListView.builder(
+                            physics: const ClampingScrollPhysics(),
                             itemCount: preferences.apps.length,
+                            shrinkWrap: true,
                             itemBuilder: (context, index){
                               return ApplicationItem(
                                   context,
@@ -60,6 +62,7 @@ class _HomeState extends State<Home> {
                           ) : Center(
                             child: ListView.builder(
                               shrinkWrap: true,
+                              physics: const ClampingScrollPhysics(),
                               itemCount: preferences.favouriteApps.length,
                               itemBuilder: (context, index){
                                 return ApplicationItem(
