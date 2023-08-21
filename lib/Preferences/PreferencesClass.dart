@@ -13,7 +13,7 @@ class PreferencesClass {
   List favouriteApps = [];
   /// List of restricted applications
   List restrictedApps = [];
-  List restrictedPackages = [];
+  List<String> restrictedPackages = [];
 
   /// Restricted app timer
   double restrictedAppTimer = 0.0;
@@ -72,15 +72,12 @@ class PreferencesClass {
     preferences.apps.forEach((element) {
       if(element.packageName == packageName) {
         preferences.restrictedApps.add(element);
+        preferences.restrictedPackages.add(element.packageName);
       }
     });
 
     /// Saves everything in the shared preferences
-    List<String> restrictedPackages = [];
-    preferences.restrictedApps.forEach((element) {
-      restrictedPackages.add(element.packageName);
-    });
-    setStringList("restricted_apps", restrictedPackages);
+    setStringList("restricted_apps", preferences.restrictedPackages);
 
   }
 
@@ -92,15 +89,12 @@ class PreferencesClass {
     for (var element in preferences.apps) {
       if(element.packageName == packageName) {
         preferences.restrictedApps.remove(element);
+        preferences.restrictedPackages.remove(element.packageName);
       }
     }
 
     /// Saves everything in the shared preferences
-    List<String> restrictedPackages = [];
-    preferences.favouriteApps.forEach((element) {
-      restrictedPackages.add(element.packageName);
-    });
-    setStringList("restricted_apps", restrictedPackages);
+    setStringList("restricted_apps", preferences.restrictedPackages);
 
   }
 
