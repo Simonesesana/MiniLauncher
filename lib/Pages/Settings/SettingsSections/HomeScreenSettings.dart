@@ -3,7 +3,7 @@ import 'package:minilauncher/main.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
-import 'package:minilauncher/Pages/Settings/SelectFavouriteApps/SelectFavouriteApps.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectFavouriteApps.dart';
 
 class HomeScreenSettings extends StatefulWidget {
 
@@ -89,6 +89,28 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                             widget.setHomePageHasChanged();
                             setBool("showOnlyFavouriteAppsOnHomeScreen", value);
                             preferences.showOnlyFavouriteAppsOnHomeScreen = value;
+                          });
+                        },
+                      ),
+
+                    ],
+                  ),
+
+
+                  /// Show round icons
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      settingsTextLabel("Show round icons", screenWidth),
+                      Switch(
+                        value: preferences.showRoundIcons,
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
+                          setState(() {
+                            widget.setHomePageHasChanged();
+                            setBool("showRoundIcons", value);
+                            preferences.showRoundIcons = value;
                           });
                         },
                       ),

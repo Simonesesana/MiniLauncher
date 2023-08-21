@@ -26,12 +26,18 @@ Future<void> fetchSettingsPreferences () async {
   bool _showOnlyFavouriteAppsOnHomeScreen = await getBool("showOnlyFavouriteAppsOnHomeScreen");
   preferences.showOnlyFavouriteAppsOnHomeScreen = _showOnlyFavouriteAppsOnHomeScreen;
 
-
   bool _showBackgroundOnHomeScreen = await getBool("showBackgroundOnHomeScreen");
   preferences.showBackgroundOnHomeScreen = _showBackgroundOnHomeScreen;
 
+  int _restrictedAppTimer = await getInt("restrictedAppTimer");
+  preferences.restrictedAppTimer = _restrictedAppTimer.toDouble();
+
   bool _showSecondsOnClock = await getBool("showSecondsOnClock");
   preferences.showSecondsOnClock = _showSecondsOnClock;
+
+  bool _showRoundIcons = await getBool("showRoundIcons");
+  preferences.showRoundIcons = _showRoundIcons;
+
 
 }
 
@@ -57,16 +63,25 @@ Future<void> fetchAppList() async {
     }
   }
 
-  /// Retrieves the favourite apps
+  /// Retrieves the favourite and restricted apps
   List<String> favouriteApps = await getStringList("favourite_apps");
+  List<String> restrictedApps = await getStringList("restricted_apps");
 
   for (var element in preferences.apps) {
-    for (var favouriteElement in favouriteApps) {
-      if(element.packageName == favouriteElement){
-        preferences.favouriteApps.add(element);
-      }
+
+    if(favouriteApps.contains(element.packageName)) {
+      preferences.favouriteApps.add(element);
     }
+
+    if(restrictedApps.contains(element.packageName)) {
+      preferences.restrictedApps.add(element);
+      preferences.restrictedPackages.add(element.packageName);
+    }
+
   }
+
+
+
 }
 
 

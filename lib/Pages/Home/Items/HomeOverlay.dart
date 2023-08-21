@@ -63,7 +63,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
                 ":${currentDateTime.minute.toString().padLeft(2, "0")}"
                 "${preferences.showSecondsOnClock ? ":${currentDateTime.second.toString().padLeft(2, "0")}" : ""}",
                 style: GoogleFonts.montserrat(
-                  letterSpacing: 5,
+                  letterSpacing: 3,
                   color: preferences.selectedTheme.textColor,
                   fontSize: MediaQuery.of(context).size.width / 10
                 ),

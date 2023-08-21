@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Pages/Home/Home.dart';
-import 'package:minilauncher/Pages/Settings/SelectFavouriteApps/SelectFavouriteApps.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/ThemeSettings.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/HomeScreenSettings.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/RestrictedAppsSettings.dart';
-import 'package:minilauncher/Pages/Settings/SettingsSections/ThemeSettings.dart';
-import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
-import 'package:minilauncher/Preferences/Preferences.dart';
-import 'package:minilauncher/Themes/Theme.dart';
-import 'package:minilauncher/main.dart';
-import 'package:page_transition/page_transition.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -66,6 +62,13 @@ class _SettingsState extends State<Settings> {
           centerTitle: true,
           backgroundColor: preferences.selectedTheme.textColor.withOpacity(0.1),
 
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(15),
+              bottomRight: Radius.circular(15)
+            )
+          ),
+          
           title: Text(
             "Settings",
             style: GoogleFonts.montserrat(
@@ -102,9 +105,10 @@ class _SettingsState extends State<Settings> {
 
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: screenWidth / 20,
-              vertical: screenWidth / 14
+            padding: EdgeInsets.only(
+              top: screenWidth / 30,
+              left: screenWidth / 20,
+              right: screenWidth / 20
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -131,7 +135,9 @@ class _SettingsState extends State<Settings> {
 
                   RestrictedAppsSettings(
                       setHomePageHasChanged: setHomePageHasChanged
-                  )
+                  ),
+
+                  const SizedBox(height: 20),
 
                 ],
               ),

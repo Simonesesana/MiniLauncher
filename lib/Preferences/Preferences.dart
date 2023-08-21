@@ -46,11 +46,39 @@ Future<String> getString(String key) async {
 
 }
 
-/// Set string list
+/// Set string
 Future<void> setString(String key, String value) async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString(key, value);
+
+}
+/// ////////////////////////////////////////////////////////////////////////////
+
+
+/// INT
+/// ////////////////////////////////////////////////////////////////////////////
+/// Get int
+Future<int> getInt(String key) async {
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  int? value = 0;
+  value = prefs.getInt(key);
+
+  if(value != null ) {
+    return value;
+  } else {
+    return 0;
+  }
+
+}
+
+/// Set int
+Future<void> setInt(String key, int value) async {
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setInt(key, value);
 
 }
 /// ////////////////////////////////////////////////////////////////////////////
@@ -74,7 +102,7 @@ Future<bool> getBool(String key) async {
 
 }
 
-/// Set string list
+/// Set bool
 Future<void> setBool(String key, bool value) async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();

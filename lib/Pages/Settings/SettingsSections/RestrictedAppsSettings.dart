@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:minilauncher/main.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
-import 'package:minilauncher/Pages/Settings/SelectFavouriteApps/SelectFavouriteApps.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectRestrictedApps.dart';
 
 class RestrictedAppsSettings extends StatefulWidget {
 
@@ -17,7 +17,6 @@ class RestrictedAppsSettings extends StatefulWidget {
 }
 
 class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +72,7 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
                   /// Select restricted apps
@@ -85,17 +85,17 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
                       IconButton(
                         color: preferences.selectedTheme.textColor,
                         icon: Icon(
+                          size: 17,
                           Icons.arrow_forward_ios,
                           color: preferences.selectedTheme.textColor,
-                          size: 17,
                         ),
                         onPressed: (){
                           widget.setHomePageHasChanged();
                           Navigator.push(
                               context,
                               PageTransition(
-                                  child: const SelectFavouriteApps(),
-                                  type: PageTransitionType.fade
+                                type: PageTransitionType.fade,
+                                child: const SelectRestrictedApps(),
                               )
                           );
                         },
@@ -103,6 +103,40 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
 
                     ],
                   ),
+
+
+                  /// Divider
+                  settingsDivider(screenWidth),
+                  
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10
+                    ),
+                    child: settingsTextLabel(
+                        "Timer duration: ${preferences.restrictedAppTimer.toInt().toString()}s",
+                        screenWidth
+                    )
+                  ),
+
+
+                  Slider(
+                    value: preferences.restrictedAppTimer,
+                    min: 0,
+                    max: 60,
+                    divisions: 12,
+                    activeColor: preferences.selectedTheme.textColor,
+                    inactiveColor: preferences.selectedTheme.textColor.withOpacity(0.2),
+                    onChanged: (value) {
+                      setState(() {
+                        preferences.restrictedAppTimer = value;
+                        setInt("restrictedAppTimer", value.toInt());
+                      });
+                    },
+                  ),
+
+                  const SizedBox(
+                    height: 10,
+                  )
 
                 ],
               ),

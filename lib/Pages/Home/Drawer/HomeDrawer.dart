@@ -19,6 +19,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
   /// Search bar text
   String searchText = "";
 
+  /// Search bar controller
+  TextEditingController searchBarController = TextEditingController();
+
   /// This function determines if the app is being searched in the search bar
   bool isSearched(String appName) {
 
@@ -50,13 +53,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
               /// Search bar
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 10,
-                    bottom: 5
-                ),
+                padding: const EdgeInsets.fromLTRB(5, 10, 5, 5),
                 child: GestureDetector(
                   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
                   child: TextField(
+
+                    controller: searchBarController,
                     onChanged: (String value) {
                       setState(() {
                         searchText = value;
@@ -68,7 +70,21 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         fontSize: MediaQuery.of(context).size.width / 25
                     ),
 
-                    decoration: textFieldDecoration(screenWidth),
+                    decoration: textFieldDecoration(screenWidth).copyWith(
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            searchText = "";
+                            searchBarController.clear();
+                          });
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: preferences.selectedTheme.textColor,
+                          size: MediaQuery.of(context).size.width / 25,
+                        ),
+                      )
+                    ),
                   ),
                 ),
               ).animate().fade(
