@@ -1,9 +1,9 @@
-import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
-import 'package:minilauncher/Themes/Theme.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
+import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/Themes/Theme.dart';
 
 import '../../main.dart';
 
@@ -17,12 +17,41 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
+  /// Fetches app theme
+  Future<void> fetchAppTheme() async {
+
+    String appTheme = await getString("app_theme");
+    switch (appTheme) {
+      case "light":
+        setState(() {
+          preferences.selectedTheme = lightTheme;
+        });
+        break;
+      case "dark":
+        setState(() {
+          preferences.selectedTheme = darkTheme;
+        });
+        break;
+      default:
+        setState(() {
+          preferences.selectedTheme = darkTheme;
+        });
+        break;
+    }
+
+  }
+
   void initialize() async {
+
+    /// Fetches app theme
+    await fetchAppTheme();
 
     /// Launcher initialization
     await initializeLauncher();
 
-    Navigator.pushReplacementNamed(context, '/home');
+    if(context.mounted) {
+      Navigator.pushReplacementNamed(context, '/home');
+    }
 
   }
 
@@ -35,36 +64,39 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+    return Scaffold(
+      backgroundColor: preferences.selectedTheme.primaryColor,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
 
-        /// Loading spinkit
-        SpinKitRing(
-          lineWidth: 1,
-          color: preferences.selectedTheme.textColor,
-          size: MediaQuery.of(context).size.width / 10,
-        ),
+          /// Loading spinkit
+          SpinKitRing(
+            lineWidth: 1,
+            color: preferences.selectedTheme.textColor,
+            size: MediaQuery.of(context).size.width / 10,
+          ),
 
-        /// Text
-        Padding(
-            padding: const EdgeInsets.only(
-              top: 20,
-            ),
-            child: Text(
-                "Loading, please wait...",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    height: 1.2,
-                    color: preferences.selectedTheme.textColor,
-                    fontWeight: FontWeight.w300,
-                    decoration: TextDecoration.none,
-                    fontSize: MediaQuery.of(context).size.width / 20
-                )
-            )
-        )
+          /// Text
+          Padding(
+              padding: const EdgeInsets.only(
+                top: 20,
+              ),
+              child: Text(
+                  "Loading, please wait...",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.nunito(
+                      height: 1.2,
+                      color: preferences.selectedTheme.textColor,
+                      fontWeight: FontWeight.w300,
+                      decoration: TextDecoration.none,
+                      fontSize: MediaQuery.of(context).size.width / 20
+                  )
+              )
+          )
 
-      ],
+        ],
+      ),
     );
   }
 }

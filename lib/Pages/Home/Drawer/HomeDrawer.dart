@@ -1,11 +1,13 @@
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:device_apps/device_apps.dart';
+import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
 
 import '../../../main.dart';
-import 'package:flutter/material.dart';
 import '../Items/ApplicationItem.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../GlobalProperties/TextFieldDecoration.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key? key}) : super(key: key);
@@ -33,6 +35,27 @@ class _HomeDrawerState extends State<HomeDrawer> {
       return true;
     }
     return false;
+  }
+
+
+  /// Checks if new apps have been installed
+  void checkNewApps() async {
+    List<Application> apps = await DeviceApps.getInstalledApplications(
+      includeAppIcons: true,
+      includeSystemApps: true,
+      onlyAppsWithLaunchIntent: true,
+    );
+    if(apps.length != preferences.apps.length) {
+      print("no");
+      await initializeLauncher(fetchOnlyAppList: true);
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    checkNewApps();
+    super.initState();
   }
 
   @override

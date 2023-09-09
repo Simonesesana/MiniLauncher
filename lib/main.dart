@@ -15,6 +15,8 @@ PreferencesClass preferences = PreferencesClass();
 
 void main() async {
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   /// Locks device orientation
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

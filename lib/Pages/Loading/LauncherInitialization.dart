@@ -1,11 +1,18 @@
 import 'dart:async';
-import 'package:minilauncher/Preferences/Preferences.dart';
-import 'package:minilauncher/Themes/Theme.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
+import 'package:minilauncher/Preferences/Preferences.dart';
 
 /// Function which initializes the launcher
-Future<void> initializeLauncher () async {
+Future<void> initializeLauncher (
+      {bool? fetchOnlyAppList}
+    ) async {
+
+  if(fetchOnlyAppList != null && fetchOnlyAppList) {
+    await fetchAppList();
+    orderApps();
+    return;
+  }
 
   // Fetches settings preferences
   await fetchSettingsPreferences();
@@ -13,8 +20,8 @@ Future<void> initializeLauncher () async {
   // Fetches app list
   await fetchAppList();
 
-  // Retrieves the app theme
-  await fetchAppTheme();
+  // Orders apps in alphabetic order
+  orderApps();
 
 }
 
@@ -52,17 +59,6 @@ Future<void> fetchAppList() async {
     onlyAppsWithLaunchIntent: true,
   );
 
-  /// Ordinates the list in alphabetic order
-  for (int i = 0; i < preferences.apps.length - 1; i++) {
-    for (int j = 0; j < preferences.apps.length - i - 1; j++) {
-      if (preferences.apps[j].appName.compareTo(preferences.apps[j + 1].appName) > 0) {
-        var temp = preferences.apps[j];
-        preferences.apps[j] = preferences.apps[j + 1];
-        preferences.apps[j + 1] = temp;
-      }
-    }
-  }
-
   /// Retrieves the favourite and restricted apps
   List<String> favouriteApps = await getStringList("favourite_apps");
   List<String> restrictedApps = await getStringList("restricted_apps");
@@ -80,25 +76,19 @@ Future<void> fetchAppList() async {
 
   }
 
-
-
 }
 
 
-/// Fetches app theme
-Future<void> fetchAppTheme() async {
-
-  String appTheme = await getString("app_theme");
-  switch (appTheme) {
-    case "light":
-      preferences.selectedTheme = lightTheme;
-      break;
-    case "dark":
-      preferences.selectedTheme = darkTheme;
-      break;
-    default:
-      preferences.selectedTheme = darkTheme;
-      break;
+/// Orders app into alphabetic order
+void orderApps() {
+  /// Ordinates the list in alphabetic order
+  for (int i = 0; i < preferences.apps.length - 1; i++) {
+    for (int j = 0; j < preferences.apps.length - i - 1; j++) {
+      if (preferences.apps[j].appName.compareTo(preferences.apps[j + 1].appName) > 0) {
+        var temp = preferences.apps[j];
+        preferences.apps[j] = preferences.apps[j + 1];
+        preferences.apps[j + 1] = temp;
+      }
+    }
   }
-
 }
