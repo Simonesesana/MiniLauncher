@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:android_intent_plus/android_intent.dart';
 
 void showRestrictedAppDialog(BuildContext context, String packageName) async {
 
@@ -110,6 +111,15 @@ ApplicationItem(
   var icon
 ) {
   return GestureDetector(
+
+    onLongPress: () {
+      AndroidIntent intent = AndroidIntent(
+        action: "android.settings.APPLICATION_DETAILS_SETTINGS",
+        data: "package:$packageName",
+        package: packageName,
+      );
+      intent.launch();
+    },
 
     onTap: (){
 

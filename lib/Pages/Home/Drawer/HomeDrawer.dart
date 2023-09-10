@@ -46,7 +46,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
       onlyAppsWithLaunchIntent: true,
     );
     if(apps.length != preferences.apps.length) {
-      print("no");
       await initializeLauncher(fetchOnlyAppList: true);
       setState(() {});
     }
