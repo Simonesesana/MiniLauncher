@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
+
 import '../../main.dart';
 import 'package:flutter/material.dart';
 import 'package:minilauncher/Pages/Home/Items/HomeOverlay.dart';
@@ -11,6 +16,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  bool isLoading = true;
+
+  /// Function to detect if the page is loading
+  void detectLoading(Timer timer) {
+
+    if(preferences.apps.isNotEmpty){
+      setState(() {isLoading = false;});
+      timer.cancel();
+    }
+
+  }
+
+  @override
+  void initState() {
+    if(preferences.showOnlyFavouriteAppsOnHomeScreen) {
+        setState(() {isLoading = false;});
+    } else {
+      Timer t = Timer.periodic(Duration(seconds: 1), detectLoading);
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +63,7 @@ class _HomeState extends State<Home> {
                       vertical: MediaQuery.of(context).size.height / 4,
                       horizontal: MediaQuery.of(context).size.width / 30
                   ),
-                  child: Center(
+                  child: !isLoading ? Center(
                       child: Card(
                         elevation: 0,
                         color: preferences.showBackgroundOnHomeScreen
@@ -76,6 +103,11 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       )
+                  ) : const Center(
+                    child: SpinKitRing(
+                      color: Colors.white,
+                      lineWidth: 1,
+                    ),
                   ),
                 )
 

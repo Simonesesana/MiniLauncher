@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:typed_data';
+import 'package:minilauncher/Preferences/PreferencesClass.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
@@ -14,9 +17,6 @@ Future<void> initializeLauncher (
     return;
   }
 
-  // Fetches settings preferences
-  await fetchSettingsPreferences();
-
   // Fetches app list
   await fetchAppList();
 
@@ -25,6 +25,31 @@ Future<void> initializeLauncher (
 
 }
 
+
+
+/// Fetches app list
+Future<void> fetchAppList() async {
+
+  /// Retrieves the app list
+  preferences.apps = await DeviceApps.getInstalledApplications(
+    includeAppIcons: true,
+    includeSystemApps: true,
+    onlyAppsWithLaunchIntent: true,
+  );
+
+  /// Retrieves the restricted apps
+  List<String> restrictedApps = await getStringList("restricted_apps");
+
+  for (var element in preferences.apps) {
+
+    if(restrictedApps.contains(element.packageName)) {
+      preferences.restrictedApps.add(element);
+      preferences.restrictedPackages.add(element.packageName);
+    }
+
+  }
+
+}
 
 
 /// Fetches settings preferences
@@ -49,36 +74,6 @@ Future<void> fetchSettingsPreferences () async {
 }
 
 
-/// Fetches app list
-Future<void> fetchAppList() async {
-
-  /// Retrieves the app list
-  preferences.apps = await DeviceApps.getInstalledApplications(
-    includeAppIcons: true,
-    includeSystemApps: true,
-    onlyAppsWithLaunchIntent: true,
-  );
-
-  /// Retrieves the favourite and restricted apps
-  List<String> favouriteApps = await getStringList("favourite_apps");
-  List<String> restrictedApps = await getStringList("restricted_apps");
-
-  for (var element in preferences.apps) {
-
-    if(favouriteApps.contains(element.packageName)) {
-      preferences.favouriteApps.add(element);
-    }
-
-    if(restrictedApps.contains(element.packageName)) {
-      preferences.restrictedApps.add(element);
-      preferences.restrictedPackages.add(element.packageName);
-    }
-
-  }
-
-}
-
-
 /// Orders app into alphabetic order
 void orderApps() {
   /// Ordinates the list in alphabetic order
@@ -91,4 +86,22 @@ void orderApps() {
       }
     }
   }
+}
+
+
+/// Fetches favourite apps
+Future<void> fetchFavouriteApps() async {
+
+  List<String> favouritePackages = await getStringList("favourite_apps_names");
+  List<String> favouriteNames = await getStringList("favourite_apps_packages");
+  List<String> favouriteIcons = await getStringList("favourite_apps_icons");
+
+  for (int i = 0; i < favouritePackages.length; i++) {
+    preferences.favouriteApps.add(FavouriteApplication(
+        favouritePackages[i],
+        favouriteNames[i],
+        base64Decode(favouriteIcons[i])
+    ));
+  }
+
 }

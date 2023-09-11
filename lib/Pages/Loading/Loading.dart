@@ -41,13 +41,21 @@ class _LoadingState extends State<Loading> {
 
   }
 
+
+
   void initialize() async {
 
     /// Fetches app theme
     await fetchAppTheme();
 
+    /// Fetches favourite apps
+    await fetchFavouriteApps();
+
+    /// Fetches settings preferences
+    await fetchSettingsPreferences();
+
     /// Launcher initialization
-    await initializeLauncher();
+    initializeLauncher();
 
     if(context.mounted) {
       Navigator.pushReplacementNamed(context, '/home');

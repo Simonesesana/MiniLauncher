@@ -144,9 +144,15 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
 
                           /// Adds or removes app from favourite
                           if(isFavourite(preferences.apps[index].packageName)) {
-                            PreferencesClass.removeFavouriteApp(preferences.apps[index].packageName);
+                            PreferencesClass.removeFavouriteApp(
+                                preferences.apps[index].packageName
+                            );
                           } else {
-                            PreferencesClass.addFavouriteApp(preferences.apps[index].packageName);
+                            PreferencesClass.addFavouriteApp(
+                                preferences.apps[index].appName,
+                                preferences.apps[index].packageName,
+                                preferences.apps[index].icon
+                            );
                           }
 
                           /// Updates interface

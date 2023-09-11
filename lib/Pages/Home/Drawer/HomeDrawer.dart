@@ -1,5 +1,7 @@
 import 'package:device_apps/device_apps.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
+import 'package:minilauncher/Pages/Loading/Loading.dart';
 
 import '../../../main.dart';
 import '../Items/ApplicationItem.dart';
@@ -68,7 +70,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       backgroundColor: preferences.selectedTheme.primaryColor,
 
       body: SafeArea(
-        child: Padding(
+        child: preferences.apps.isNotEmpty ? Padding(
           padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
           child: Column(
             children: [
@@ -120,33 +122,43 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     horizontal: 10
                   ),
                   child: AnimationLimiter(
-                    child: ListView.builder(
-                      itemCount: preferences.apps.length,
-                      itemBuilder: (context, index){
-                        try{
-                          if(preferences.apps[index].appName[0].toString().toUpperCase() != preferences.apps[index-1].appName[0].toString().toUpperCase()) {
-                            return ApplicationItemWithLetter(index);
+                    child: ScrollConfiguration(
+                      behavior: const ScrollBehavior().copyWith(
+                          overscroll: false
+                      ),
+                      child: ListView.builder(
+                        itemCount: preferences.apps.length,
+                        itemBuilder: (context, index){
+                          try{
+                            if(preferences.apps[index].appName[0].toString().toUpperCase() != preferences.apps[index-1].appName[0].toString().toUpperCase()) {
+                              return ApplicationItemWithLetter(index);
+                            }
+                          } catch(e) {
+                            return  ApplicationItemWithLetter(index);
                           }
-                        } catch(e) {
-                          return  ApplicationItemWithLetter(index);
-                        }
-                        return AnimationConfiguration.staggeredList(
-                          position: index,
-                          child: FadeInAnimation(
-                              child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
-                                  context,
-                                  preferences.apps[index].appName,
-                                  preferences.apps[index].packageName,
-                                  preferences.apps[index].icon
-                              ) : const SizedBox()
-                          ),
-                        );
-                      },
+                          return AnimationConfiguration.staggeredList(
+                            position: index,
+                            child: FadeInAnimation(
+                                child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                                    context,
+                                    preferences.apps[index].appName,
+                                    preferences.apps[index].packageName,
+                                    preferences.apps[index].icon
+                                ) : const SizedBox()
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
+              )
             ],
+          ),
+        ) : const Center(
+          child: SpinKitRing(
+            color: Colors.white,
+            lineWidth: 1,
           ),
         ),
       ),

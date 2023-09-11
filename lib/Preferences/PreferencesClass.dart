@@ -1,6 +1,15 @@
+import 'dart:convert';
+
 import '../Themes/Theme.dart';
 import 'package:minilauncher/main.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
+
+class FavouriteApplication {
+  String appName;
+  String packageName;
+  var icon;
+  FavouriteApplication(this.appName, this.packageName, this.icon);
+}
 
 class PreferencesClass {
 
@@ -10,10 +19,11 @@ class PreferencesClass {
   /// List of all the applications
   List apps = [];
   /// List of favourite applications
-  List favouriteApps = [];
+  List<FavouriteApplication> favouriteApps = [];
   /// List of restricted applications
   List restrictedApps = [];
   List<String> restrictedPackages = [];
+
 
   /// Restricted app timer
   double restrictedAppTimer = 0.0;
@@ -25,42 +35,49 @@ class PreferencesClass {
   late bool showOnlyFavouriteAppsOnHomeScreen;
 
   /// Sets an app as favourite
-  static Future<void> addFavouriteApp(String packageName)  async {
+  static addFavouriteApp(String appName, String packageName, var icon) {
 
-    /// Adds the favourite app to the favourite apps list based on the
-    /// package name
-    preferences.apps.forEach((element) {
-      if(element.packageName == packageName) {
-        preferences.favouriteApps.add(element);
-      }
-    });
+    /// Adds the favourite app to the favourite apps list
+    preferences.favouriteApps.add(FavouriteApplication(appName, packageName, icon));
 
     /// Saves everything in the shared preferences
     List<String> favouritePackages = [];
-    preferences.favouriteApps.forEach((element) {
+    List<String> favouriteNames = [];
+    List<String> favouriteIcons = [];
+    for (var element in preferences.favouriteApps) {
       favouritePackages.add(element.packageName);
-    });
-    setStringList("favourite_apps", favouritePackages);
+      favouriteNames.add(element.appName);
+      favouriteIcons.add(base64Encode(element.icon));
+    }
+    setStringList("favourite_apps_names", favouriteNames);
+    setStringList("favourite_apps_packages", favouritePackages);
+    setStringList("favourite_apps_icons", favouriteIcons);
 
   }
 
   /// Removes an app from the favourite list
-  static Future<void> removeFavouriteApp(String packageName)  async {
+  static removeFavouriteApp(String packageName) {
 
-    /// Adds the favourite app to the favourite apps list based on the
-    /// package name
-    for (var element in preferences.apps) {
+    /// Removes the favourite app to the favourite apps list
+    for (var element in preferences.favouriteApps) {
       if(element.packageName == packageName) {
         preferences.favouriteApps.remove(element);
+        break;
       }
     }
 
     /// Saves everything in the shared preferences
     List<String> favouritePackages = [];
-    preferences.favouriteApps.forEach((element) {
+    List<String> favouriteNames = [];
+    List<String> favouriteIcons = [];
+    for (var element in preferences.favouriteApps) {
       favouritePackages.add(element.packageName);
-    });
-    setStringList("favourite_apps", favouritePackages);
+      favouriteNames.add(element.appName);
+      favouriteIcons.add(element.icon.toString());
+    }
+    setStringList("favourite_apps_names", favouriteNames);
+    setStringList("favourite_apps_packages", favouritePackages);
+    setStringList("favourite_apps_icons", favouriteIcons);
 
   }
 
