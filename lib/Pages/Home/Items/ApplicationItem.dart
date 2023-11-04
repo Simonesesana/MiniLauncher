@@ -106,7 +106,7 @@ void showRestrictedAppDialog(BuildContext context, String packageName) async {
 
 ApplicationItem(
   BuildContext context,
-  String appName,
+  String? appName,
   String packageName,
   var icon
 ) {
@@ -168,7 +168,7 @@ ApplicationItem(
 
             /// App text
             Text(
-              appName,
+              appName != null ? appName : "",
               style: GoogleFonts.montserrat(
                 letterSpacing: 1.5,
                 fontWeight: FontWeight.w500,

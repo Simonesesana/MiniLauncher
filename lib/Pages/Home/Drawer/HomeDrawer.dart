@@ -1,14 +1,12 @@
-import 'package:device_apps/device_apps.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
-import 'package:minilauncher/Pages/Loading/Loading.dart';
-
 import '../../../main.dart';
-import '../Items/ApplicationItem.dart';
 import 'package:flutter/material.dart';
+import '../Items/ApplicationItem.dart';
+import 'package:device_apps/device_apps.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../GlobalProperties/TextFieldDecoration.dart';
+import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -169,54 +167,63 @@ class _HomeDrawerState extends State<HomeDrawer> {
   ApplicationItemWithLetter (
       int index
       ) {
-    return searchText == "" ? Padding(
-      padding: const EdgeInsets.only(
-        top: 10,
-        bottom: 5
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AnimationConfiguration.staggeredList(
-            position: index,
-            child: FadeInAnimation(
-              child: Text(
-                  preferences.apps[index].appName[0].toString().toUpperCase(),
-                  style: GoogleFonts.montserrat(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: preferences.selectedTheme.textColor
-                  )
+    try {
+      return searchText == "" ? Padding(
+        padding: const EdgeInsets.only(
+            top: 10,
+            bottom: 5
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AnimationConfiguration.staggeredList(
+              position: index,
+              child: FadeInAnimation(
+                child: Text(
+                    preferences.apps[index].appName[0].toString().toUpperCase(),
+                    style: GoogleFonts.montserrat(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: preferences.selectedTheme.textColor
+                    )
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          AnimationConfiguration.staggeredList(
-            position: index,
-            child: FadeInAnimation(
-                child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
-                    context,
-                    preferences.apps[index].appName,
-                    preferences.apps[index].packageName,
-                    preferences.apps[index].icon
-                ) : const SizedBox()
+            const SizedBox(
+              height: 5,
             ),
-          )
-        ],
-      ),
-    ) : AnimationConfiguration.staggeredList(
-      position: index,
-      child: FadeInAnimation(
-          child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
-              context,
-              preferences.apps[index].appName,
-              preferences.apps[index].packageName,
-              preferences.apps[index].icon
-          ) : const SizedBox()
-      ),
-    );
+            AnimationConfiguration.staggeredList(
+              position: index,
+              child: FadeInAnimation(
+                  child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                      context,
+                      preferences.apps[index].appName,
+                      preferences.apps[index].packageName,
+                      preferences.apps[index].icon
+                  ) : const SizedBox()
+              ),
+            )
+          ],
+        ),
+      ) : AnimationConfiguration.staggeredList(
+        position: index,
+        child: FadeInAnimation(
+            child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                context,
+                preferences.apps[index].appName,
+                preferences.apps[index].packageName,
+                preferences.apps[index].icon
+            ) : const SizedBox()
+        ),
+      );
+    } catch (e) {
+      return isSearched(preferences.apps[index].appName) ? ApplicationItem(
+          context,
+          preferences.apps[index].appName,
+          preferences.apps[index].packageName,
+          preferences.apps[index].icon
+      ) : const SizedBox();
+    }
   }
   
 }
