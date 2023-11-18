@@ -21,17 +21,16 @@ class _HomeDrawerState extends State<HomeDrawer> {
   /// Search bar text
   String searchText = "";
 
+  /// Keyboard focus node
+  final FocusNode _focusNode = FocusNode();
+
   /// Search bar controller
   TextEditingController searchBarController = TextEditingController();
 
   /// This function determines if the app is being searched in the search bar
   bool isSearched(String appName) {
 
-    if(searchText==""){
-      return true;
-    }
-
-    if(appName.toLowerCase().contains(searchText.toLowerCase())){
+    if(searchText=="" || appName.toLowerCase().contains(searchText.toLowerCase())){
       return true;
     }
     return false;
@@ -51,10 +50,40 @@ class _HomeDrawerState extends State<HomeDrawer> {
     }
   }
 
+  /// Checks if the app is the only one of the list, if so it opens it. Only if
+  /// the app is not restricted
+  void checkIfOpenApp() {
+    String _text = searchText;
+    if(preferences.apps.where(
+            (app) => app.appName.toString().toLowerCase().contains(searchText)
+    ).length == 1){
+      var app = preferences.apps.where(
+              (app) => app.appName.toString().toLowerCase().contains(searchText)
+      ).toList()[0];
+      if(!preferences.restrictedPackages.contains(app.packageName)) {
+        setState(() {
+          searchText = "";
+          searchBarController.clear();
+        });
+        DeviceApps.openApp(
+            preferences.apps.where((app) => app.appName.toString().toLowerCase().contains(_text)).toList()[0].packageName);
+       }
+    }
+  }
+
+  /// Opens the keyboard
+  openKeyboard() {
+    Future.delayed(const Duration(milliseconds: 0), () {
+      // Focuses on the search bar
+      FocusScope.of(context).requestFocus(_focusNode);
+    });
+  }
+
   @override
   void initState() {
     checkNewApps();
     super.initState();
+    if (preferences.automaticallyOpenKeyboardOnAppDrawer) openKeyboard();
   }
 
   @override
@@ -80,11 +109,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
                   child: TextField(
 
+                    focusNode: _focusNode,
                     controller: searchBarController,
                     onChanged: (String value) {
                       setState(() {
                         searchText = value;
                       });
+                      checkIfOpenApp();
                     },
 
                     style: GoogleFonts.montserrat(

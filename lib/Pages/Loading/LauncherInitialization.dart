@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
-import 'package:minilauncher/Preferences/PreferencesClass.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/Preferences/PreferencesClass.dart';
 
 /// Function which initializes the launcher
 Future<void> initializeLauncher (
@@ -70,6 +69,11 @@ Future<void> fetchSettingsPreferences () async {
   bool _showRoundIcons = await getBool("showRoundIcons");
   preferences.showRoundIcons = _showRoundIcons;
 
+  bool _showDialerButtonOnHomeScreen = await getBool("showDialerButtonOnHomeScreen");
+  preferences.showDialerButtonOnHomeScreen = _showDialerButtonOnHomeScreen;
+
+  bool _automaticallyOpenKeyboardOnAppDrawer = await getBool("automaticallyOpenKeyboardOnAppDrawer");
+  preferences.automaticallyOpenKeyboardOnAppDrawer = _automaticallyOpenKeyboardOnAppDrawer;
 
 }
 

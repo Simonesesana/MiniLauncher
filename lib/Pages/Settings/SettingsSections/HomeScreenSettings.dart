@@ -160,6 +160,27 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     ],
                   ),
 
+                  /// Show dialer button
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      settingsTextLabel("Show dialer button on home screen", screenWidth),
+                      Switch(
+                        value: preferences.showDialerButtonOnHomeScreen,
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
+                          setState(() {
+                            widget.setHomePageHasChanged();
+                            setBool("showDialerButtonOnHomeScreen", value);
+                            preferences.showDialerButtonOnHomeScreen = value;
+                          });
+                        },
+                      ),
+
+                    ],
+                  ),
+
                 ],
               ),
             ),

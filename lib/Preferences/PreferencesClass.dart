@@ -32,7 +32,9 @@ class PreferencesClass {
   late bool showRoundIcons;
   late bool showSecondsOnClock;
   late bool showBackgroundOnHomeScreen;
+  late bool showDialerButtonOnHomeScreen;
   late bool showOnlyFavouriteAppsOnHomeScreen;
+  late bool automaticallyOpenKeyboardOnAppDrawer;
 
   /// Sets an app as favourite
   static addFavouriteApp(String appName, String packageName, var icon) {

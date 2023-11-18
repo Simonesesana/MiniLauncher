@@ -7,6 +7,8 @@ import 'package:minilauncher/Pages/Settings/SettingsSections/ThemeSettings.dart'
 import 'package:minilauncher/Pages/Settings/SettingsSections/HomeScreenSettings.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/RestrictedAppsSettings.dart';
 
+import 'SettingsSections/AppDrawerSettings.dart';
+
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -126,6 +128,14 @@ class _SettingsState extends State<Settings> {
                   ),
 
                   HomeScreenSettings(
+                    setHomePageHasChanged: setHomePageHasChanged,
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  AppDrawerSettings(
                     setHomePageHasChanged: setHomePageHasChanged,
                   ),
 

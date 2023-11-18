@@ -4,6 +4,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
 import 'package:minilauncher/Pages/Settings/Settings.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../main.dart';
 import 'package:flutter/material.dart';
@@ -110,6 +112,30 @@ class _HomeOverlayState extends State<HomeOverlay> {
                   ),
                   child: Icon(
                     Icons.keyboard_arrow_up,
+                    color: preferences.selectedTheme.textColor,
+                  ),
+                ),
+              ),
+
+              const SizedBox(width: 10),
+
+              /// Dialer
+              GestureDetector(
+                onTap: () async {
+                  await launchUrl(Uri.parse('tel:'));
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      border: Border.all(
+                          width: 1,
+                          color: preferences.selectedTheme.textColor
+                      ),
+                      borderRadius: BorderRadius.circular(100)
+                  ),
+                  child: Icon(
+                    Icons.phone,
                     color: preferences.selectedTheme.textColor,
                   ),
                 ),
