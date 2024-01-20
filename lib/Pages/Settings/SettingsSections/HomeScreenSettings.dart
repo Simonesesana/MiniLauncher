@@ -83,6 +83,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       settingsTextLabel("Show only favourite apps on home screen", screenWidth),
                       Switch(
                         value: preferences.showOnlyFavouriteAppsOnHomeScreen,
+                        inactiveTrackColor: Colors.transparent,
                         activeColor: preferences.selectedTheme.textColor,
                         onChanged: (value) {
                           setState(() {
@@ -105,8 +106,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       settingsTextLabel("Show round icons", screenWidth),
                       Switch(
                         value: preferences.showRoundIcons,
-                        activeColor: preferences.selectedTheme.textColor,
-                        onChanged: (value) {
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showRoundIcons", value);
@@ -126,8 +127,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       settingsTextLabel("Show background on home screen", screenWidth),
                       Switch(
                         value: preferences.showBackgroundOnHomeScreen,
-                        activeColor: preferences.selectedTheme.textColor,
-                        onChanged: (value) {
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showBackgroundOnHomeScreen", value);
@@ -147,8 +148,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       settingsTextLabel("Show seconds on clock", screenWidth),
                       Switch(
                         value: preferences.showSecondsOnClock,
-                        activeColor: preferences.selectedTheme.textColor,
-                        onChanged: (value) {
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showSecondsOnClock", value);
@@ -168,8 +169,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       settingsTextLabel("Show dialer button on home screen", screenWidth),
                       Switch(
                         value: preferences.showDialerButtonOnHomeScreen,
-                        activeColor: preferences.selectedTheme.textColor,
-                        onChanged: (value) {
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showDialerButtonOnHomeScreen", value);

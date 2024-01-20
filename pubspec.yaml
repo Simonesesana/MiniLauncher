@@ -26,6 +26,7 @@ dependencies:
   page_transition: ^2.0.9
   android_intent_plus: ^4.0.2
   url_launcher: ^6.1.14
+  flutter_switch: ^0.3.2
 
 
 dev_dependencies:

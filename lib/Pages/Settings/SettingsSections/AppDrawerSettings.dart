@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:minilauncher/main.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
-import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectFavouriteApps.dart';
+
 
 class AppDrawerSettings extends StatefulWidget {
 
@@ -52,8 +52,8 @@ class _AppDrawerSettingsState extends State<AppDrawerSettings> {
                       settingsTextLabel("Automatically open drawer keyboard", screenWidth),
                       Switch(
                         value: preferences.automaticallyOpenKeyboardOnAppDrawer,
-                        activeColor: preferences.selectedTheme.textColor,
-                        onChanged: (value) {
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("automaticallyOpenKeyboardOnAppDrawer", value);
@@ -64,7 +64,6 @@ class _AppDrawerSettingsState extends State<AppDrawerSettings> {
 
                     ],
                   ),
-
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:device_apps/device_apps.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
 import 'package:minilauncher/Pages/Settings/Settings.dart';
@@ -59,27 +60,39 @@ class _HomeOverlayState extends State<HomeOverlay> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               /// Time
-              Text(
-                "${currentDateTime.hour.toString().padLeft(2, "0")}"
-                ":${currentDateTime.minute.toString().padLeft(2, "0")}"
-                "${preferences.showSecondsOnClock ? ":${currentDateTime.second.toString().padLeft(2, "0")}" : ""}",
-                style: GoogleFonts.montserrat(
-                  letterSpacing: 3,
-                  color: preferences.selectedTheme.textColor,
-                  fontSize: MediaQuery.of(context).size.width / 10
+              GestureDetector(
+                onTap: () {
+                  // Launch app
+                  DeviceApps.openApp("com.android.deskclock");
+                },
+                child: Text(
+                  "${currentDateTime.hour.toString().padLeft(2, "0")}"
+                  ":${currentDateTime.minute.toString().padLeft(2, "0")}"
+                  "${preferences.showSecondsOnClock ? ":${currentDateTime.second.toString().padLeft(2, "0")}" : ""}",
+                  style: GoogleFonts.montserrat(
+                    letterSpacing: 3,
+                    color: preferences.selectedTheme.textColor,
+                    fontSize: MediaQuery.of(context).size.width / 10
+                  ),
                 ),
               ),
 
               /// Date
-              Text(
-                "${currentDateTime.day.toString().padLeft(2, "0")}/"
-                "${currentDateTime.month.toString().padLeft(2, "0")}/"
-                "${currentDateTime.year}",
-                style: GoogleFonts.montserrat(
-                  letterSpacing: 2,
-                  color: preferences.selectedTheme.textColor,
-                  fontSize: MediaQuery.of(context).size.width / 22
+              GestureDetector(
+                onTap: () {
+                  launchUrl(Uri.parse("content://com.android.calendar/time/"));
+                },
+                child: Text(
+                  "${currentDateTime.day.toString().padLeft(2, "0")}/"
+                  "${currentDateTime.month.toString().padLeft(2, "0")}/"
+                  "${currentDateTime.year}",
+                  style: GoogleFonts.montserrat(
+                    letterSpacing: 2,
+                    color: preferences.selectedTheme.textColor,
+                    fontSize: MediaQuery.of(context).size.width / 22
+                  ),
                 ),
               )
             ],
