@@ -118,6 +118,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       checkIfOpenApp();
                     },
 
+                    cursorColor: preferences.selectedTheme.textColor.withOpacity(0.5),
+
                     style: GoogleFonts.montserrat(
                         color: preferences.selectedTheme.textColor,
                         fontSize: MediaQuery.of(context).size.width / 25
@@ -184,9 +186,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
               )
             ],
           ),
-        ) : const Center(
+        ) : Center(
           child: SpinKitRing(
-            color: Colors.white,
+            color: preferences.selectedTheme.textColor,
             lineWidth: 1,
           ),
         ),

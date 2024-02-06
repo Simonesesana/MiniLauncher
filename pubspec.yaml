@@ -27,6 +27,10 @@ dependencies:
   android_intent_plus: ^4.0.2
   url_launcher: ^6.1.14
   flutter_switch: ^0.3.2
+  app_usage: ^3.0.1
+  geolocator: ^10.1.0
+  weather_icons: ^3.0.0
+
 
 
 dev_dependencies:

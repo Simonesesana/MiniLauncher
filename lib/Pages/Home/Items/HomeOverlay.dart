@@ -1,16 +1,12 @@
 import 'dart:async';
-
-import 'package:device_apps/device_apps.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
-import 'package:minilauncher/Pages/Settings/Settings.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
 import '../../../main.dart';
 import 'package:flutter/material.dart';
+import 'package:device_apps/device_apps.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:minilauncher/Pages/Settings/Settings.dart';
+import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
 
 class HomeOverlay extends StatefulWidget {
   const HomeOverlay({Key? key}) : super(key: key);
@@ -39,6 +35,12 @@ class _HomeOverlayState extends State<HomeOverlay> {
   void initState() {
     updateDate();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    dateTimer.cancel();
+    super.dispose();
   }
 
   @override

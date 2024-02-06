@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
-import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectRestrictedApps.dart';
 import 'package:minilauncher/Preferences/PreferencesClass.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectRestrictedApps.dart';
 
 /// Pages import
 import 'Pages/Home/Home.dart';

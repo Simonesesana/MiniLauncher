@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/PhoneUsageSettings.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Pages/Home/Home.dart';
@@ -137,6 +138,14 @@ class _SettingsState extends State<Settings> {
 
                   AppDrawerSettings(
                     setHomePageHasChanged: setHomePageHasChanged,
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  PhoneUsageSettings(
+                      setHomePageHasChanged: setHomePageHasChanged
                   ),
 
                   const SizedBox(

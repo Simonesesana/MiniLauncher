@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
@@ -21,6 +22,9 @@ Future<void> initializeLauncher (
 
   // Orders apps in alphabetic order
   orderApps();
+
+  // Gets weather forecast
+  weatherForecast.getWeatherForecast();
 
 }
 
@@ -62,6 +66,11 @@ Future<void> fetchSettingsPreferences () async {
 
   int _restrictedAppTimer = await getInt("restrictedAppTimer");
   preferences.restrictedAppTimer = _restrictedAppTimer.toDouble();
+
+  int _maxPhoneUsage = await getInt("maxPhoneUsage");
+  if(_maxPhoneUsage != 0) {
+    preferences.maxPhoneUsage = _maxPhoneUsage.toDouble();
+  }
 
   bool _showSecondsOnClock = await getBool("showSecondsOnClock");
   preferences.showSecondsOnClock = _showSecondsOnClock;

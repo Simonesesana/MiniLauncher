@@ -28,6 +28,9 @@ class PreferencesClass {
   /// Restricted app timer
   double restrictedAppTimer = 0.0;
 
+  /// Max phone usage
+  double maxPhoneUsage = 120;
+
   /// Settings variables
   late bool showRoundIcons;
   late bool showSecondsOnClock;
