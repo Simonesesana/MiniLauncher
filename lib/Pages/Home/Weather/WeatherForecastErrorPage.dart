@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:minilauncher/Preferences/WeatherForecast.dart';
 
 class WeatherForecastErrorPage extends StatefulWidget {
 
@@ -17,6 +17,7 @@ class WeatherForecastErrorPage extends StatefulWidget {
 class _WeatherForecastErrorPageState extends State<WeatherForecastErrorPage> {
   @override
   Widget build(BuildContext context) {
+
     if(widget.weatherForecastState == WeatherForecastState.loading) {
       return SpinKitRing(
         color: preferences.selectedTheme.textColor,

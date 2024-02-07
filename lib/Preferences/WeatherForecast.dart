@@ -85,9 +85,18 @@ class WeatherForecast {
 
     // Get address
     final response = await http.get(Uri.parse(
-        "https://www.mapquestapi.com/geocoding/v1/reverse?key=BxjvY69fjSJU7qjHmB0vetQpjBZdV1kE&"
-        "location=$latitude,$longitude&includeRoadMetadata=false&includeNearestIntersection=false"
+        "https://us1.locationiq.com/v1/reverse?key=pk.cdf5b8b5afde4edf64aeadaf04e9d81f"
+        "&lat=$latitude&lon=$longitude&format=json&accept-language=en"
     ));
+    if (response.statusCode == 200) {
+      try {
+        location = jsonDecode(response.body)["address"]["city"];
+      } catch(e) {
+        location = jsonDecode(response.body)["address"]["town"];
+      }
+    } else {
+      return WeatherForecastState.apiCallProblem;
+    }
 
     return WeatherForecastState.allFine;
 
