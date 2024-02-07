@@ -30,6 +30,7 @@ dependencies:
   app_usage: ^3.0.1
   geolocator: ^10.1.0
   weather_icons: ^3.0.0
+  http: ^1.2.0
 
 
 

@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/Preferences/PreferencesClass.dart';
 
 /// Function which initializes the launcher
