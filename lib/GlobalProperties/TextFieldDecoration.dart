@@ -1,8 +1,11 @@
-import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
+import 'package:minilauncher/main.dart';
 
-InputDecoration textFieldDecoration (double screenWidth) {
+InputDecoration searchBarTextFieldDecoration (
+    double screenWidth
+  ) {
   return InputDecoration(
 
     prefixIcon: Icon(
@@ -14,7 +17,7 @@ InputDecoration textFieldDecoration (double screenWidth) {
     contentPadding: EdgeInsets.zero,
 
     // Hint text
-    hintText: "Search an app",
+    hintText: lng["generic"]["searchAnApp"],
     hintStyle: GoogleFonts.montserrat(
         letterSpacing: 0.5,
         color: Colors.grey[400],

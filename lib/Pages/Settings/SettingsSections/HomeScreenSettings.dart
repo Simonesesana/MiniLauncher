@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:minilauncher/main.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
-import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
+import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectFavouriteApps.dart';
 
 class HomeScreenSettings extends StatefulWidget {
@@ -28,7 +29,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
       children: [
 
         /// Home screen
-        settingsTitleTextLabel("Home Screen", screenWidth),
+        settingsTitleTextLabel(lng["settings"]["homeScreen"]["title"], screenWidth),
 
         SizedBox(
           width: screenWidth,
@@ -48,7 +49,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Select favourite apps", screenWidth),
+                      settingsTextLabel(lng["settings"]["homeScreen"]["selectFavouriteApps"], screenWidth),
 
                       IconButton(
                         color: preferences.selectedTheme.textColor,
@@ -80,7 +81,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Show only favourite apps on home screen", screenWidth),
+                      settingsTextLabel(lng["settings"]["homeScreen"]["showOnlyFavouriteApps"], screenWidth),
                       Switch(
                         value: preferences.showOnlyFavouriteAppsOnHomeScreen,
                         inactiveTrackColor: Colors.transparent,
@@ -103,7 +104,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Show round icons", screenWidth),
+                      settingsTextLabel(lng["settings"]["homeScreen"]["showRoundIcons"], screenWidth),
                       Switch(
                         value: preferences.showRoundIcons,
                         inactiveTrackColor: Colors.transparent,
@@ -124,7 +125,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Show background on home screen", screenWidth),
+                      settingsTextLabel(lng["settings"]["homeScreen"]["showBackground"], screenWidth),
                       Switch(
                         value: preferences.showBackgroundOnHomeScreen,
                         inactiveTrackColor: Colors.transparent,
@@ -145,7 +146,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Show seconds on clock", screenWidth),
+                      settingsTextLabel(lng["settings"]["homeScreen"]["showSecondsOnClock"], screenWidth),
                       Switch(
                         value: preferences.showSecondsOnClock,
                         inactiveTrackColor: Colors.transparent,
@@ -166,7 +167,7 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Show dialer button on home screen", screenWidth),
+                      settingsTextLabel(lng["settings"]["homeScreen"]["showDialerButton"], screenWidth),
                       Switch(
                         value: preferences.showDialerButtonOnHomeScreen,
                         inactiveTrackColor: Colors.transparent,

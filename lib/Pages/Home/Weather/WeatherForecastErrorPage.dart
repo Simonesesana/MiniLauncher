@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Preferences/WeatherForecast.dart';
 
 class WeatherForecastErrorPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _WeatherForecastErrorPageState extends State<WeatherForecastErrorPage> {
             horizontal: 10
           ),
           child: Text(
-            "Localization service is disabled, please enable it to view weather forecast",
+            lng["weather"]["errors"]["location_service_disabled"],
             textAlign: TextAlign.center,
             style: GoogleFonts.montserrat(
                 letterSpacing: 1,
@@ -49,7 +50,7 @@ class _WeatherForecastErrorPageState extends State<WeatherForecastErrorPage> {
               horizontal: 10
           ),
           child: Text(
-            "Localization access is denied. Please enable it to view weather forecast",
+            lng["weather"]["errors"]["locationAccessDenied"],
             textAlign: TextAlign.center,
             style: GoogleFonts.montserrat(
                 letterSpacing: 1,
@@ -60,14 +61,15 @@ class _WeatherForecastErrorPageState extends State<WeatherForecastErrorPage> {
           ),
         ),
       );
-    } else if(widget.weatherForecastState == WeatherForecastState.apiCallProblem) {
+    } else if(widget.weatherForecastState == WeatherForecastState.apiCallProblem
+        || widget.weatherForecastState == WeatherForecastState.connectionError) {
       return Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(
               horizontal: 10
           ),
           child: Text(
-            "Network error.\nPlease try again later",
+            lng["weather"]["errors"]["networkError"],
             textAlign: TextAlign.center,
             style: GoogleFonts.montserrat(
                 letterSpacing: 1,

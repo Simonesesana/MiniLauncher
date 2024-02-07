@@ -1,0 +1,65 @@
+{
+
+  "generic": {
+    "searchAnApp": "Search an app",
+    "cancel": "Cancel"
+  },
+
+  "loading" : {
+    "mainText": "Loading, please wait..."
+  },
+
+  "settings": {
+    "title": "Settings",
+    "theme": {
+      "title": "Theme",
+      "selectTheme": "Select theme",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "language": {
+      "title": "Language",
+      "selectLanguage": "Select language",
+      "english": "English",
+      "italian": "Italian"
+    },
+    "homeScreen": {
+      "title": "Home Screen",
+      "selectFavouriteApps": "Select favourite apps",
+      "showOnlyFavouriteApps": "Show only favourite apps on home screen",
+      "showRoundIcons": "Show round icons",
+      "showBackground": "Show background on home screen",
+      "showSecondsOnClock": "Show seconds on clock",
+      "showDialerButton": "Show dialer button on home screen",
+      "favouriteApps": "Favourite apps"
+    },
+    "appDrawer": {
+      "title": "App Drawer",
+      "automaticallyOpenKeyboard": "Automatically open drawer keyboard"
+    },
+    "restrictedApps": {
+      "title": "Restricted Apps",
+      "description": "The access for these app is restricted. You have to wait a fixed amount of time for these apps to boot up.",
+      "selectRestrictedApps": "Select restricted apps",
+      "timerDuration": "Timer duration:"
+    }
+  },
+
+  "restrictedApp": {
+    "title": "Restricted App",
+    "description": "This app won't open until the timer runs out. You can change the timer settings in the option menu"
+  },
+
+  "weather": {
+    "myLocation": "My Location",
+    "this": "Now",
+    "today": "Today",
+    "weeklyForecast": "Weekly Forecast",
+    "errors": {
+      "networkError": "Network error.\nPlease try again later",
+      "locationAccessDenied": "Localization access is denied. Please enable it to view weather forecast",
+      "locationServiceDisabled": "Localization service is disabled, please enable it to view weather forecast"
+    }
+  }
+
+}

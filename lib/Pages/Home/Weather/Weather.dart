@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Preferences/WeatherForecast.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Pages/Home/Weather/WeatherForecastErrorPage.dart';
 import 'package:minilauncher/Pages/Home/Weather/DailyForecast/DailyForecastWidget.dart';
 import 'package:minilauncher/Pages/Home/Weather/WeeklyForecast/WeeklyForecastWidget.dart';
@@ -54,7 +55,7 @@ class _WeatherState extends State<Weather> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "My Location\n",
+                      text: "${lng["weather"]["myLocation"]}\n",
                       style: GoogleFonts.montserrat(
                           letterSpacing: 1,
                           fontWeight: FontWeight.w400,

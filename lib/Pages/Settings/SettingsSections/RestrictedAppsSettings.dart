@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
+import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
+import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectRestrictedApps.dart';
 
 class RestrictedAppsSettings extends StatefulWidget {
@@ -34,7 +35,7 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
               left: 3
           ),
           child: Text(
-            "Restricted apps",
+            lng["settings"]["restrictedApps"]["title"],
             style: GoogleFonts.montserrat(
                 letterSpacing: 1,
                 color: preferences.selectedTheme.textColor,
@@ -49,9 +50,7 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
             bottom: 10
           ),
           child: Text(
-            "The access for these app is restricted. You can open "
-            "them for a maximum amount of times per day and you have to wait "
-            "a fixed amount of time for them to boot up.",
+            lng["settings"]["restrictedApps"]["description"],
             textAlign: TextAlign.justify,
             style: GoogleFonts.montserrat(
               letterSpacing: 1,
@@ -80,7 +79,10 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Select restricted apps", screenWidth),
+                      settingsTextLabel(
+                        lng["settings"]["restrictedApps"]["selectRestrictedApps"],
+                        screenWidth
+                      ),
 
                       IconButton(
                         color: preferences.selectedTheme.textColor,
@@ -113,7 +115,8 @@ class _RestrictedAppsSettingsState extends State<RestrictedAppsSettings> {
                         top: 10
                     ),
                     child: settingsTextLabel(
-                        "Timer duration: ${preferences.restrictedAppTimer.toInt().toString()}s",
+                        "${lng["settings"]["restrictedApps"]["timerDuration"]}"
+                        " ${preferences.restrictedAppTimer.toInt().toString()}s",
                         screenWidth
                     )
                   ),

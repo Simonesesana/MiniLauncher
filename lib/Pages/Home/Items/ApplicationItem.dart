@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +53,7 @@ void showRestrictedAppDialog(BuildContext context, String packageName) async {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Restricted app",
+                      lng["restrictedApp"]["title"],
                       style: GoogleFonts.montserrat(
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w500,
@@ -66,8 +67,7 @@ void showRestrictedAppDialog(BuildContext context, String packageName) async {
                         bottom: 30
                       ),
                       child: Text(
-                        "This app won't open until the timer runs out. You can change "
-                        "the timer settings in the option menu",
+                        lng["restrictedApp"]["description"],
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.montserrat(
                           letterSpacing: 1.5,
@@ -167,13 +167,17 @@ ApplicationItem(
             const SizedBox(width: 10),
 
             /// App text
-            Text(
-              appName != null ? appName : "",
-              style: GoogleFonts.montserrat(
-                letterSpacing: 1.5,
-                fontWeight: FontWeight.w500,
-                color: preferences.selectedTheme.textColor,
-                fontSize: MediaQuery.of(context).size.width / 23,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.65,
+              child: Text(
+                appName ?? "",
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.montserrat(
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w500,
+                  color: preferences.selectedTheme.textColor,
+                  fontSize: MediaQuery.of(context).size.width / 23,
+                ),
               ),
             ),
           ],

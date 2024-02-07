@@ -1,38 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/main.dart';
 import 'package:minilauncher/Themes/Theme.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
-import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
 
-class ThemeSettings extends StatefulWidget {
+class LanguageSettings extends StatefulWidget {
 
   Function setHomePageHasChanged;
 
-  ThemeSettings({super.key, required this.setHomePageHasChanged});
+  LanguageSettings({super.key, required this.setHomePageHasChanged});
 
   @override
-  State<ThemeSettings> createState() => _ThemeSettingsState();
+  State<LanguageSettings> createState() => _LanguageSettingsState();
 }
 
-class _ThemeSettingsState extends State<ThemeSettings> {
-
-  /// Selected theme
-  String? selectedTheme = "dark";
-
-  @override
-  void initState() {
-    super.initState();
-    if(preferences.selectedTheme == lightTheme) {
-      setState(() {
-        selectedTheme = "light";
-      });
-    } else if(preferences.selectedTheme == darkTheme) {
-      setState(() {
-        selectedTheme = "dark";
-      });
-    }
-  }
+class _LanguageSettingsState extends State<LanguageSettings> {
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +27,7 @@ class _ThemeSettingsState extends State<ThemeSettings> {
       children: [
 
         /// Theme
-        settingsTitleTextLabel(
-          lng["settings"]["theme"]["title"],
-          screenWidth
-        ),
+        settingsTitleTextLabel(lng["settings"]["language"]["title"], screenWidth),
 
         SizedBox(
           width: screenWidth,
@@ -63,57 +43,60 @@ class _ThemeSettingsState extends State<ThemeSettings> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  /// Select theme
-                  settingsTextLabel(lng["settings"]["theme"]["selectTheme"], screenWidth),
+                  /// Select language
+                  settingsTextLabel(lng["settings"]["language"]["selectLanguage"], screenWidth),
 
-                  /// Light
+                  /// English
                   Padding(
                     padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
                     child: Row(
                       children: [
                         Radio<String> (
-                          value: "light",
-                          groupValue: selectedTheme,
+                          value: "en",
+                          groupValue: Lng.locale,
                           visualDensity: const VisualDensity(
                               horizontal: VisualDensity.minimumDensity,
                               vertical: VisualDensity.minimumDensity),
                           onChanged: (String? value){
                             setState(() {
-                              selectedTheme = value;
+                              Lng.changeLanguage("en");
                               widget.setHomePageHasChanged();
-                              setString("app_theme", "light");
-                              preferences.selectedTheme = lightTheme;
                             });
                           },
                           activeColor: preferences.selectedTheme.textColor,
                         ),
-                        settingsTextLabel(lng["settings"]["theme"]["light"], screenWidth)
+                        settingsTextLabel(
+                          lng["settings"]["language"]["english"]
+                          , screenWidth
+                        )
                       ],
                     ),
                   ),
-
-                  /// Dark
+                  
+                  
+                  /// Italian
                   Padding(
                     padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
                     child: Row(
                       children: [
                         Radio<String> (
-                          value: "dark",
-                          groupValue: selectedTheme,
+                          value: "it",
+                          groupValue: Lng.locale,
                           visualDensity: const VisualDensity(
                               horizontal: VisualDensity.minimumDensity,
                               vertical: VisualDensity.minimumDensity),
                           onChanged: (String? value){
                             setState(() {
-                              selectedTheme = value;
+                              Lng.changeLanguage("it");
                               widget.setHomePageHasChanged();
-                              setString("app_theme", "dark");
-                              preferences.selectedTheme = darkTheme;
                             });
                           },
                           activeColor: preferences.selectedTheme.textColor,
                         ),
-                        settingsTextLabel(lng["settings"]["theme"]["dark"], screenWidth)
+                        settingsTextLabel(
+                            lng["settings"]["language"]["italian"],
+                            screenWidth
+                        )
                       ],
                     ),
                   ),

@@ -125,7 +125,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         fontSize: MediaQuery.of(context).size.width / 25
                     ),
 
-                    decoration: textFieldDecoration(screenWidth).copyWith(
+                    decoration: searchBarTextFieldDecoration(screenWidth).copyWith(
                       suffixIcon: GestureDetector(
                         onTap: () {
                           setState(() {

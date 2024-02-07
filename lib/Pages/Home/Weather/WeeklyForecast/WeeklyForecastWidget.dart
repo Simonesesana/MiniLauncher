@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/main.dart';
 
@@ -38,7 +39,7 @@ class _WeeklyForecastWidgetState extends State<WeeklyForecastWidget> {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    "Weekly Forecast",
+                    lng["weather"]["weeklyForecast"],
                     style: GoogleFonts.montserrat(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -79,7 +80,7 @@ class _WeeklyForecastWidgetState extends State<WeeklyForecastWidget> {
                               weatherForecast.longTermForecast[index].day.day != DateTime.now().day ?
                                 "${weatherForecast.longTermForecast[index].day.day.toString().padLeft(2, "0")}"
                                 "/${weatherForecast.longTermForecast[index].day.month.toString().padLeft(2, "0")}"
-                                : "Today",
+                                : "${lng["weather"]["today"]}",
                               style: GoogleFonts.montserrat(
                                 color: preferences.selectedTheme.textColor
                               ),

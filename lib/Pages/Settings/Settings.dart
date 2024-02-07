@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:minilauncher/Pages/Settings/SettingsSections/PhoneUsageSettings.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Pages/Home/Home.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/ThemeSettings.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/LanguageSettings.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/HomeScreenSettings.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/RestrictedAppsSettings.dart';
 
@@ -73,7 +74,7 @@ class _SettingsState extends State<Settings> {
           ),
           
           title: Text(
-            "Settings",
+            lng["settings"]["title"],
             style: GoogleFonts.montserrat(
                 letterSpacing: 2,
                 fontWeight: FontWeight.w400,
@@ -128,6 +129,14 @@ class _SettingsState extends State<Settings> {
                     height: 20,
                   ),
 
+                  LanguageSettings(
+                      setHomePageHasChanged: setHomePageHasChanged
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
                   HomeScreenSettings(
                     setHomePageHasChanged: setHomePageHasChanged,
                   ),
@@ -138,14 +147,6 @@ class _SettingsState extends State<Settings> {
 
                   AppDrawerSettings(
                     setHomePageHasChanged: setHomePageHasChanged,
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  PhoneUsageSettings(
-                      setHomePageHasChanged: setHomePageHasChanged
                   ),
 
                   const SizedBox(

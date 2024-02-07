@@ -1,0 +1,65 @@
+{
+
+  "generic": {
+    "searchAnApp": "Cerca un'app",
+    "cancel": "Annulla"
+  },
+
+  "loading": {
+    "mainText": "Cariamento, attendere..."
+  },
+
+  "settings": {
+    "title": "Impostazioni",
+    "theme": {
+      "title": "Tema",
+      "selectTheme": "Seleziona tema",
+      "light": "Chiaro",
+      "dark": "Scuro"
+    },
+    "language": {
+      "title": "Lingua",
+      "selectLanguage": "Seleziona lingua",
+      "english": "Inglese",
+      "italian": "Italiano"
+    },
+    "homeScreen": {
+      "title": "Schermata Home",
+      "selectFavouriteApps": "Seleziona le app preferite",
+      "showOnlyFavouriteApps": "Mostra solo le app preferite sulla schermata home",
+      "showRoundIcons": "Mostra icone rotonde",
+      "showBackground": "Mostra sfondo sulla schermata home",
+      "showSecondsOnClock": "Mostra secondi sull'orologio",
+      "showDialerButton": "Mostra pulsante contatti",
+      "favouriteApps": "App preferite"
+    },
+    "appDrawer": {
+      "title": "App Drawer",
+      "automaticallyOpenKeyboard": "Apri automaticamente la tastiera"
+    },
+    "restrictedApps": {
+      "title": "App ristrette",
+      "description": "L'accesso a queste app è ristretto. Potrai accedere a queste app solo dopo che sarà trascorso il tempo impostato.",
+      "selectRestrictedApps": "Seleziona le app ristrette",
+      "timerDuration": "Durata timer:"
+    }
+  },
+
+  "restrictedApp": {
+    "title": "App ristretta",
+    "description": "Questa app si aprirà allo scadere del timer. Puoi cambiare la durata del timer nelle impostazioni"
+  },
+
+  "weather": {
+    "myLocation": "La mia posizione",
+    "this": "Ora",
+    "today": "Oggi",
+    "weeklyForecast": "Previsioni Settimanali",
+    "errors": {
+      "networkError": "Errore di rete.\nRiprovare più tardi",
+      "locationAccessDenied": "Accesso alla posizione negato, attivalo per vedere le previsioni meteo",
+      "locationServiceDisabled": "Servizio di localizzazione disabilitato, attivalo per vedere le previsioni meteo"
+    }
+  }
+
+}

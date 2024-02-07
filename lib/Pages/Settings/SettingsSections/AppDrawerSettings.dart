@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:minilauncher/main.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
-import 'package:minilauncher/Pages/Settings/SettingsWidget.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
+import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
 
 
 class AppDrawerSettings extends StatefulWidget {
@@ -28,7 +29,7 @@ class _AppDrawerSettingsState extends State<AppDrawerSettings> {
       children: [
 
         /// Home screen
-        settingsTitleTextLabel("App Drawer", screenWidth),
+        settingsTitleTextLabel(lng["settings"]["appDrawer"]["title"], screenWidth),
 
         SizedBox(
           width: screenWidth,
@@ -49,7 +50,7 @@ class _AppDrawerSettingsState extends State<AppDrawerSettings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      settingsTextLabel("Automatically open drawer keyboard", screenWidth),
+                      settingsTextLabel(lng["settings"]["appDrawer"]["automaticallyOpenKeyboard"], screenWidth),
                       Switch(
                         value: preferences.automaticallyOpenKeyboardOnAppDrawer,
                         inactiveTrackColor: Colors.transparent,

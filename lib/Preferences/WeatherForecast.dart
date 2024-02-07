@@ -1,7 +1,9 @@
+import "dart:async";
 import "dart:convert";
 import "package:flutter/material.dart";
 import "package:http/http.dart" as http;
 import "package:geolocator/geolocator.dart";
+import "package:minilauncher/Internationalization/Locale.dart";
 import "package:weather_icons/weather_icons.dart";
 
 // Weather Forecast instance
@@ -16,6 +18,7 @@ enum WeatherForecastState {
   locationPermissionDenied,
   locationPermissionDeniedForever,
   apiCallProblem,
+  connectionError,
   allFine
 }
 
@@ -54,6 +57,8 @@ class WeatherForecast {
 
   String location = "";
 
+  bool isFetchingWeather = false;
+
   DateTime lastUpdate = DateTime.now();
 
   // Weather forecast
@@ -86,7 +91,7 @@ class WeatherForecast {
     // Get address
     final response = await http.get(Uri.parse(
         "https://us1.locationiq.com/v1/reverse?key=pk.cdf5b8b5afde4edf64aeadaf04e9d81f"
-        "&lat=$latitude&lon=$longitude&format=json&accept-language=en"
+        "&lat=$latitude&lon=$longitude&format=json&accept-language=${Lng.locale}"
     ));
     if (response.statusCode == 200) {
       try {
@@ -177,16 +182,43 @@ class WeatherForecast {
   // 1 - Location service problem
   // 2 - API call problem
   Future<void> getWeatherForecast() async {
+
+    if(isFetchingWeather) {
+      return;
+    }
+
+    isFetchingWeather = true;
+
+    // Function timeout
+    Timer(const Duration(seconds: 10), () {
+      weatherForecastState = WeatherForecastState.connectionError;
+      isFetchingWeather = false;
+      return;
+    });
+
+    // Get user coordinates
     WeatherForecastState localizationState = await getUserCoordinates();
     if(localizationState != WeatherForecastState.allFine) {
       weatherForecastState = localizationState;
+      isFetchingWeather = false;
       return;
     }
+
+    // Get weather forecast
     await getDailyForecast();
     await get14DaysForecast();
-    weatherForecastState = WeatherForecastState.allFine;
-    lastUpdate = DateTime.now();
+
+    if(weatherForecastState != WeatherForecastState.apiCallProblem) {
+      weatherForecastState = WeatherForecastState.allFine;
+      lastUpdate = DateTime.now();
+      isFetchingWeather = false;
+      return;
+    }
+
+    isFetchingWeather = false;
     return;
+
+
   }
 
   // Returns an icon base on the weather-code

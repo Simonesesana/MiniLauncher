@@ -2,6 +2,7 @@ import '../../../../main.dart';
 import 'package:flutter/material.dart';
 import '../../../Home/Items/ApplicationItem.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Preferences/PreferencesClass.dart';
 import 'package:minilauncher/GlobalProperties/TextFieldDecoration.dart';
 
@@ -65,7 +66,7 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
         ),
 
         title: Text(
-          "Favourite Apps",
+          lng["settings"]["homeScreen"]["favouriteApps"],
           style: GoogleFonts.montserrat(
               letterSpacing: 2,
               fontWeight: FontWeight.w400,
@@ -115,7 +116,7 @@ class _SelectFavouriteAppsState extends State<SelectFavouriteApps> {
                     fontSize: MediaQuery.of(context).size.width / 25
                   ),
 
-                  decoration: textFieldDecoration(screenWidth),
+                  decoration: searchBarTextFieldDecoration(screenWidth),
                 ),
               ),
             ),

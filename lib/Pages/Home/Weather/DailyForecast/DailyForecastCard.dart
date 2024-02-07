@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Preferences/WeatherForecast.dart';
 
 
@@ -29,7 +30,7 @@ dailyForecastCard(HourlyForecast forecast, BuildContext context) {
               // Hour
               Text(
                 forecast.time.hour == DateTime.now().hour ?
-                "Now" : "${forecast.time.hour.toString().padLeft(2, "0")}:00",
+                "${lng["weather"]["this"]}" : "${forecast.time.hour.toString().padLeft(2, "0")}:00",
                 style: GoogleFonts.montserrat(
                     letterSpacing: 1,
                     color: preferences.selectedTheme.textColor,

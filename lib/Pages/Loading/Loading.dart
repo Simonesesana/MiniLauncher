@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
-import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Themes/Theme.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
+import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
 
-import '../../main.dart';
 
 
 class Loading extends StatefulWidget {
@@ -42,8 +43,11 @@ class _LoadingState extends State<Loading> {
   }
 
 
-
   void initialize() async {
+
+
+    // Fetches launcher language
+    await Lng.initializeLanguage();
 
     /// Fetches app theme
     await fetchAppTheme();

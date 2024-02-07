@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:minilauncher/Internationalization/Locale.dart';
+
 import '../../../main.dart';
 import 'package:flutter/material.dart';
 import 'package:device_apps/device_apps.dart';
