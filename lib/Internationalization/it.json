@@ -59,6 +59,22 @@
       "networkError": "Errore di rete.\nRiprovare più tardi",
       "locationAccessDenied": "Accesso alla posizione negato, attivalo per vedere le previsioni meteo",
       "locationServiceDisabled": "Servizio di localizzazione disabilitato, attivalo per vedere le previsioni meteo"
+    },
+    "weatherType": {
+      "clearSky": "Sereno",
+      "partlyCloudy": "Parzialmente nuvoloso",
+      "fog": "Nebbia",
+      "drizzle": "Pioviggine",
+      "freezingDrizzle": "Pioviggine ghiacciata",
+      "rain": "Pioggia",
+      "freezingRain": "Pioggia ghiacciata",
+      "snow": "Neve",
+      "snowGrains": "Nevischio",
+      "rainshower": "Pioggia",
+      "snowshower": "Neve",
+      "thunderstorm": "Temporale",
+      "thunderstormWithHail": "Temporale con grandine",
+      "unknown": "Sconosciuto"
     }
   }
 

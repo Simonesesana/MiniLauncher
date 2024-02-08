@@ -59,6 +59,22 @@
       "networkError": "Network error.\nPlease try again later",
       "locationAccessDenied": "Localization access is denied. Please enable it to view weather forecast",
       "locationServiceDisabled": "Localization service is disabled, please enable it to view weather forecast"
+    },
+    "weatherType": {
+      "clearSky": "Clear sky",
+      "partlyCloudy": "Partly cloudy",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "freezingDrizzle": "Freezing drizzle",
+      "rain": "Rain",
+      "freezingRain": "Freezing rain",
+      "snow": "Snow",
+      "snowGrains": "Snow grains",
+      "rainshower": "Rain shower",
+      "snowshower": "Snow shower",
+      "thunderstorm": "Thunderstorm",
+      "thunderstormWithHail": "Thunderstorm with hail",
+      "unknown": "Unknown"
     }
   }
 

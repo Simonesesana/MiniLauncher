@@ -91,13 +91,25 @@ class WeatherForecast {
     // Get address
     final response = await http.get(Uri.parse(
         "https://us1.locationiq.com/v1/reverse?key=pk.cdf5b8b5afde4edf64aeadaf04e9d81f"
-        "&lat=$latitude&lon=$longitude&format=json&accept-language=${Lng.locale}"
+            "&lat=$latitude&lon=$longitude&format=json&accept-language=${Lng.locale}"
     ));
     if (response.statusCode == 200) {
       try {
         location = jsonDecode(response.body)["address"]["city"];
       } catch(e) {
-        location = jsonDecode(response.body)["address"]["town"];
+        try {
+          location = jsonDecode(response.body)["address"]["town"];
+        } catch(e) {
+          try {
+            location = jsonDecode(response.body)["address"]["village"];
+          } catch(e) {
+            try {
+              location = jsonDecode(response.body)["address"]["county"];
+            } catch(e) {
+              location = "Unknown";
+            }
+          }
+        }
       }
     } else {
       return WeatherForecastState.apiCallProblem;
@@ -190,7 +202,7 @@ class WeatherForecast {
     isFetchingWeather = true;
 
     // Function timeout
-    Timer(const Duration(seconds: 10), () {
+    Timer t = Timer(const Duration(seconds: 10), () {
       weatherForecastState = WeatherForecastState.connectionError;
       isFetchingWeather = false;
       return;
@@ -212,12 +224,13 @@ class WeatherForecast {
       weatherForecastState = WeatherForecastState.allFine;
       lastUpdate = DateTime.now();
       isFetchingWeather = false;
+      t.cancel();
       return;
     }
 
     isFetchingWeather = false;
+    t.cancel();
     return;
-
 
   }
 
@@ -288,48 +301,48 @@ class WeatherForecast {
   static String getWeatherState(int weatherCode) {
     switch(weatherCode) {
       case 0:
-        return "Clear sky";
+        return lng["weather"]["weatherType"]["clearSky"];
       case 1:
       case 2:
       case 3:
-        return "Partly cloudy";
+        return lng["weather"]["weatherType"]["partlyCloudy"];
       case 45:
       case 48:
-        return "Fog";
+        return lng["weather"]["weatherType"]["fog"];
       case 51:
       case 53:
       case 55:
-        return "Drizzle";
+        return lng["weather"]["weatherType"]["drizzle"];
       case 56:
       case 57:
-        return "Freezing drizzle";
+        return lng["weather"]["weatherType"]["freezingDrizzle"];
       case 61:
       case 63:
       case 65:
-        return "Rain";
+        return lng["weather"]["weatherType"]["rain"];
       case 66:
       case 67:
-        return "Freezing rain";
+        return lng["weather"]["weatherType"]["freezingRain"];
       case 71:
       case 73:
       case 75:
-        return "Snow";
+        return lng["weather"]["weatherType"]["snow"];
       case 77:
-        return "Snow grains";
+        return lng["weather"]["weatherType"]["snowGrains"];
       case 80:
       case 81:
       case 82:
-        return "Rain showers";
+        return lng["weather"]["weatherType"]["rainshower"];
       case 85:
       case 86:
-        return "Snow showers";
+        return lng["weather"]["weatherType"]["snowshower"];
       case 95:
-        return "Thunderstorm";
+        return lng["weather"]["weatherType"]["thunderstorm"];
       case 96:
       case 99:
-        return "Thunderstorm with hail";
+        return lng["weather"]["weatherType"]["thunderstormWithHail"];
       default:
-        return "Alien weather";
+        return lng["weather"]["weatherType"]["unknown"];
     }
   }
 
