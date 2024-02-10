@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:minilauncher/Pages/Home/AppUsages/AppUsages.dart';
 import 'package:minilauncher/Pages/Home/Weather/Weather.dart';
 
 import '../../main.dart';
@@ -35,7 +34,7 @@ class _HomeState extends State<Home> {
     if(preferences.showOnlyFavouriteAppsOnHomeScreen) {
         setState(() {isLoading = false;});
     } else {
-      Timer t = Timer.periodic(Duration(seconds: 1), detectLoading);
+      Timer t = Timer.periodic(const Duration(seconds: 1), detectLoading);
     }
     super.initState();
   }

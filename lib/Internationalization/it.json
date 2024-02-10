@@ -52,7 +52,7 @@
 
   "weather": {
     "myLocation": "La mia posizione",
-    "this": "Ora",
+    "now": "Ora",
     "today": "Oggi",
     "weeklyForecast": "Previsioni Settimanali",
     "errors": {
@@ -75,6 +75,29 @@
       "thunderstorm": "Temporale",
       "thunderstormWithHail": "Temporale con grandine",
       "unknown": "Sconosciuto"
+    }
+  },
+
+  "welcomePage": {
+    "page1": {
+      "title": "Benvenuto!",
+      "subtitle": "MiniLauncher è un launcher semplice e leggero progettato per Android, studiato per essere semplice e facile da usare."
+    },
+    "page2": {
+      "title": "Seleziona la tua lingua per iniziare:"
+    },
+    "page3": {
+      "title": "Concedi a Minilauncher l'accesso alla posizione per avere accesso alle previsioni meteo in tempo reale.",
+      "buttonText": "Dai il permesso"
+    },
+    "page4": {
+      "title": "Ora imposta Minilauncher come launcher predefinito ed è fatta!",
+      "buttonText": "Vai alle impostazioni"
+    },
+    "page5": {
+      "title": "Ecco fatto!",
+      "subtitle": "Ora puoi iniziare a usare il tuo nuovo launcher!",
+      "buttonText": "Inizia"
     }
   }
 

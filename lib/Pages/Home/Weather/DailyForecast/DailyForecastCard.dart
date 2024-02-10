@@ -30,7 +30,7 @@ dailyForecastCard(HourlyForecast forecast, BuildContext context) {
               // Hour
               Text(
                 forecast.time.hour == DateTime.now().hour ?
-                "${lng["weather"]["this"]}" : "${forecast.time.hour.toString().padLeft(2, "0")}:00",
+                "${lng["weather"]["now"]}" : "${forecast.time.hour.toString().padLeft(2, "0")}:00",
                 style: GoogleFonts.montserrat(
                     letterSpacing: 1,
                     color: preferences.selectedTheme.textColor,

@@ -25,17 +25,19 @@ class Lng {
   }
 
   static Future<void> changeLanguage(
-      String _locale,
+      String lcl,
       {bool forceFetch = false}
     ) async {
 
-    if(_locale == locale && !forceFetch) return;
+    // The force fetch variable forces the app to read the data from the JSON
+    // files. It is useful on first access
+    if(locale == lcl && !forceFetch) return;
 
     if(!forceFetch) {
-      await setString("preferredLanguage", _locale);
+      await setString("preferredLanguage", lcl);
     }
 
-    switch(_locale) {
+    switch(lcl) {
       case 'it':
         String jsonString = await rootBundle.loadString('lib/Internationalization/it.json');
         lng = jsonDecode(jsonString);

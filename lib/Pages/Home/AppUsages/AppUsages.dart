@@ -62,6 +62,7 @@ class _AppUsagesState extends State<AppUsages> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return isPermissionGranted ? SafeArea(
       child: Column(

@@ -45,7 +45,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       onlyAppsWithLaunchIntent: true,
     );
     if(apps.length != preferences.apps.length) {
-      await initializeLauncher(fetchOnlyAppList: true);
+      await initializeAppList(fetchOnlyAppList: true);
       setState(() {});
     }
   }
@@ -53,7 +53,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
   /// Checks if the app is the only one of the list, if so it opens it. Only if
   /// the app is not restricted
   void checkIfOpenApp() {
-    String _text = searchText;
+    String text = searchText;
     if(preferences.apps.where(
             (app) => app.appName.toString().toLowerCase().contains(searchText)
     ).length == 1){
@@ -66,7 +66,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           searchBarController.clear();
         });
         DeviceApps.openApp(
-            preferences.apps.where((app) => app.appName.toString().toLowerCase().contains(_text)).toList()[0].packageName);
+            preferences.apps.where((app) => app.appName.toString().toLowerCase().contains(text)).toList()[0].packageName);
        }
     }
   }

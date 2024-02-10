@@ -31,6 +31,8 @@ dependencies:
   geolocator: ^10.1.0
   weather_icons: ^3.0.0
   http: ^1.2.0
+  permission_handler: ^11.2.1
+  system_settings: ^2.1.0
 
 
 
@@ -56,5 +58,6 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/flags/
     - lib/Internationalization/en.json
     - lib/Internationalization/it.json

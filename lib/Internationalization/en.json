@@ -52,7 +52,7 @@
 
   "weather": {
     "myLocation": "My Location",
-    "this": "Now",
+    "now": "Now",
     "today": "Today",
     "weeklyForecast": "Weekly Forecast",
     "errors": {
@@ -75,6 +75,29 @@
       "thunderstorm": "Thunderstorm",
       "thunderstormWithHail": "Thunderstorm with hail",
       "unknown": "Unknown"
+    }
+  },
+
+  "welcomePage": {
+    "page1": {
+      "title": "Welcome!",
+      "subtitle": "MiniLauncher is a simple and lightweight launcher for Android devices. It is designed to be fast and easy to use, with a clean and minimalistic interface."
+    },
+    "page2": {
+      "title": "Select your language to start:"
+    },
+    "page3": {
+      "title": "Grant Minilauncher location access to view live weather forecast data.",
+      "buttonText": "Grant location access"
+    },
+    "page4": {
+      "title": "Now set MiniLauncher as your default launcher and enjoy!",
+      "buttonText": "Go to settings"
+    },
+    "page5": {
+      "title": "You're all set!",
+      "subtitle": "Now you can start to use your new launcher!",
+      "buttonText": "Finish"
     }
   }
 

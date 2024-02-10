@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:minilauncher/main.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Internationalization/Locale.dart';

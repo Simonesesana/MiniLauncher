@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
-import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectRestrictedApps.dart';
 
 class PhoneUsageSettings extends StatefulWidget {
 

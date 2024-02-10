@@ -91,12 +91,12 @@ class PreferencesClass {
 
     /// Adds the restricted app to the restricted apps list based on the
     /// package name
-    preferences.apps.forEach((element) {
+    for (var element in preferences.apps) {
       if(element.packageName == packageName) {
         preferences.restrictedApps.add(element);
         preferences.restrictedPackages.add(element.packageName);
       }
-    });
+    }
 
     /// Saves everything in the shared preferences
     setStringList("restricted_apps", preferences.restrictedPackages);

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/main.dart';
-import 'package:minilauncher/Themes/Theme.dart';
-import 'package:minilauncher/Preferences/Preferences.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
 
 class LanguageSettings extends StatefulWidget {

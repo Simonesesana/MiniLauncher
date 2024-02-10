@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Themes/Theme.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
+import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
 
@@ -45,8 +46,10 @@ class _LoadingState extends State<Loading> {
 
   void initialize() async {
 
+    /// Fetches first access
+    bool firstAccess = await getBool("first_access");
 
-    // Fetches launcher language
+    /// Fetches launcher language
     await Lng.initializeLanguage();
 
     /// Fetches app theme
@@ -58,11 +61,19 @@ class _LoadingState extends State<Loading> {
     /// Fetches settings preferences
     await fetchSettingsPreferences();
 
-    /// Launcher initialization
-    initializeLauncher();
+    /// App list recovery
+    initializeAppList();
 
-    if(context.mounted) {
+    // Gets weather forecast
+    if(!firstAccess) {
+      weatherForecast.getWeatherForecast();
+    }
+
+    if(context.mounted && !firstAccess) {
       Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      await setBool("first_access", true);
+      Navigator.pushReplacementNamed(context, '/welcome_page');
     }
 
   }

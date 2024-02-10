@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:minilauncher/main.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:minilauncher/Preferences/Preferences.dart';
-import 'package:minilauncher/Preferences/WeatherForecast.dart';
 import 'package:minilauncher/Preferences/PreferencesClass.dart';
 
 /// Function which initializes the launcher
-Future<void> initializeLauncher (
+Future<void> initializeAppList (
       {bool? fetchOnlyAppList}
     ) async {
 
@@ -22,9 +21,6 @@ Future<void> initializeLauncher (
 
   // Orders apps in alphabetic order
   orderApps();
-
-  // Gets weather forecast
-  weatherForecast.getWeatherForecast();
 
 }
 
@@ -58,31 +54,31 @@ Future<void> fetchAppList() async {
 /// Fetches settings preferences
 Future<void> fetchSettingsPreferences () async {
 
-  bool _showOnlyFavouriteAppsOnHomeScreen = await getBool("showOnlyFavouriteAppsOnHomeScreen");
-  preferences.showOnlyFavouriteAppsOnHomeScreen = _showOnlyFavouriteAppsOnHomeScreen;
+  bool showOnlyFavouriteAppsOnHomeScreen = await getBool("showOnlyFavouriteAppsOnHomeScreen");
+  preferences.showOnlyFavouriteAppsOnHomeScreen = showOnlyFavouriteAppsOnHomeScreen;
 
-  bool _showBackgroundOnHomeScreen = await getBool("showBackgroundOnHomeScreen");
-  preferences.showBackgroundOnHomeScreen = _showBackgroundOnHomeScreen;
+  bool showBackgroundOnHomeScreen = await getBool("showBackgroundOnHomeScreen");
+  preferences.showBackgroundOnHomeScreen = showBackgroundOnHomeScreen;
 
-  int _restrictedAppTimer = await getInt("restrictedAppTimer");
-  preferences.restrictedAppTimer = _restrictedAppTimer.toDouble();
+  int restrictedAppTimer = await getInt("restrictedAppTimer");
+  preferences.restrictedAppTimer = restrictedAppTimer.toDouble();
 
-  int _maxPhoneUsage = await getInt("maxPhoneUsage");
-  if(_maxPhoneUsage != 0) {
-    preferences.maxPhoneUsage = _maxPhoneUsage.toDouble();
+  int maxPhoneUsage = await getInt("maxPhoneUsage");
+  if(maxPhoneUsage != 0) {
+    preferences.maxPhoneUsage = maxPhoneUsage.toDouble();
   }
 
-  bool _showSecondsOnClock = await getBool("showSecondsOnClock");
-  preferences.showSecondsOnClock = _showSecondsOnClock;
+  bool showSecondsOnClock = await getBool("showSecondsOnClock");
+  preferences.showSecondsOnClock = showSecondsOnClock;
 
-  bool _showRoundIcons = await getBool("showRoundIcons");
-  preferences.showRoundIcons = _showRoundIcons;
+  bool showRoundIcons = await getBool("showRoundIcons");
+  preferences.showRoundIcons = showRoundIcons;
 
-  bool _showDialerButtonOnHomeScreen = await getBool("showDialerButtonOnHomeScreen");
-  preferences.showDialerButtonOnHomeScreen = _showDialerButtonOnHomeScreen;
+  bool showDialerButtonOnHomeScreen = await getBool("showDialerButtonOnHomeScreen");
+  preferences.showDialerButtonOnHomeScreen = showDialerButtonOnHomeScreen;
 
-  bool _automaticallyOpenKeyboardOnAppDrawer = await getBool("automaticallyOpenKeyboardOnAppDrawer");
-  preferences.automaticallyOpenKeyboardOnAppDrawer = _automaticallyOpenKeyboardOnAppDrawer;
+  bool automaticallyOpenKeyboardOnAppDrawer = await getBool("automaticallyOpenKeyboardOnAppDrawer");
+  preferences.automaticallyOpenKeyboardOnAppDrawer = automaticallyOpenKeyboardOnAppDrawer;
 
 }
 
