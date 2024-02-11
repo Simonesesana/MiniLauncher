@@ -2,9 +2,11 @@ import "dart:async";
 import "dart:convert";
 import "package:flutter/material.dart";
 import "package:http/http.dart" as http;
+import "package:minilauncher/keys.dart";
 import "package:geolocator/geolocator.dart";
-import "package:minilauncher/Internationalization/Locale.dart";
+import "package:permission_handler/permission_handler.dart";
 import "package:weather_icons/weather_icons.dart";
+import "package:minilauncher/Internationalization/Locale.dart";
 
 // Weather Forecast instance
 WeatherForecast weatherForecast = WeatherForecast();
@@ -75,12 +77,23 @@ class WeatherForecast {
       return WeatherForecastState.locationServiceDisabled;
     }
 
+    /*
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
-      await Geolocator.requestPermission();
+      try {
+        await Geolocator.requestPermission();
+      } catch(e) {
+        return WeatherForecastState.locationPermissionDeniedForever;
+      }
     }
 
     if (permission == LocationPermission.deniedForever) {
+      return WeatherForecastState.locationPermissionDeniedForever;
+    }
+     */
+
+    bool granted = await Permission.location.isGranted;
+    if (!granted) {
       return WeatherForecastState.locationPermissionDeniedForever;
     }
 
@@ -90,8 +103,8 @@ class WeatherForecast {
 
     // Get address
     final response = await http.get(Uri.parse(
-        "https://us1.locationiq.com/v1/reverse?key=pk.cdf5b8b5afde4edf64aeadaf04e9d81f"
-            "&lat=$latitude&lon=$longitude&format=json&accept-language=${Lng.locale}"
+        "https://us1.locationiq.com/v1/reverse?key=${Keys.locationIqKey}"
+            "&lat=$latitude&lon=$longitude&format=json&accept-languageA=${Lng.locale}"
     ));
     if (response.statusCode == 200) {
       try {
@@ -213,6 +226,7 @@ class WeatherForecast {
     if(localizationState != WeatherForecastState.allFine) {
       weatherForecastState = localizationState;
       isFetchingWeather = false;
+      t.cancel();
       return;
     }
 

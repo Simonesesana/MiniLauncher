@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Preferences/WeatherForecast.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class WeatherForecastErrorPage extends StatefulWidget {
 
@@ -16,6 +17,7 @@ class WeatherForecastErrorPage extends StatefulWidget {
 }
 
 class _WeatherForecastErrorPageState extends State<WeatherForecastErrorPage> {
+
   @override
   Widget build(BuildContext context) {
 
@@ -49,15 +51,41 @@ class _WeatherForecastErrorPageState extends State<WeatherForecastErrorPage> {
           padding: const EdgeInsets.symmetric(
               horizontal: 10
           ),
-          child: Text(
-            lng["weather"]["errors"]["locationAccessDenied"],
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-                letterSpacing: 1,
-                fontWeight: FontWeight.w400,
-                color: preferences.selectedTheme.textColor,
-                fontSize: MediaQuery.of(context).size.width / 25
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                lng["weather"]["errors"]["locationAccessDenied"],
+                textAlign: TextAlign.center,
+                style: GoogleFonts.montserrat(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w400,
+                    color: preferences.selectedTheme.textColor,
+                    fontSize: MediaQuery.of(context).size.width / 25
+                ),
+              ),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  openAppSettings();
+                },
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 15
+                    ),
+                    child: Text(
+                      lng["welcomePage"]["page3"]["buttonText"],
+                      style: GoogleFonts.montserrat(
+                          color: preferences.selectedTheme.primaryColor,
+                          fontSize: MediaQuery.of(context).size.width / 27
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       );
