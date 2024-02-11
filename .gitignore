@@ -45,4 +45,4 @@ app.*.map.json
 
 
 # Keystore files
-lib/keys.dart
+/lib/keys.dart
