@@ -12,9 +12,11 @@ class FormattedUsageInfo {
   late int minutes;
   late var appIcon;
 
+  late int totalUsageInMinutes;
+
   // Constructor
   FormattedUsageInfo({required this.appName, required this.hours,
-    required this.minutes, required this.appIcon});
+    required this.minutes, required this.appIcon, required this.totalUsageInMinutes});
 
 }
 
@@ -36,12 +38,6 @@ class _AppUsagesState extends State<AppUsages> {
 
   // Function to get app usages
   Future<void> getAppUsage() async {
-
-    // grant usage permission - opens Usage Settings
-
-
-    // check if usage permission is granted
-
 
     // get all app usage info from today
     DateTime endDate = DateTime.now();
@@ -72,11 +68,16 @@ class _AppUsagesState extends State<AppUsages> {
             appName: app.appName,
             hours: app.usage.inHours.toInt(),
             minutes: app.usage.inMinutes - app.usage.inHours.toInt() * 60,
-            appIcon: appIcon
+            appIcon: appIcon,
+            totalUsageInMinutes: app.usage.inMinutes
           )
         );
       }
     }
+
+    // Ordering the results based on the time usage
+    formattedAppUsageList.sort((b, a) => a.totalUsageInMinutes.compareTo(b.totalUsageInMinutes));
+    //formattedAppUsageList = formattedAppUsageList.reversed.toList();
 
     setState(() {});
 

@@ -53,44 +53,44 @@ class _WeatherState extends State<Weather> {
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "${lng["weather"]["myLocation"]}\n",
-                      style: GoogleFonts.montserrat(
-                          letterSpacing: 1,
-                          fontWeight: FontWeight.w400,
-                          color: preferences.selectedTheme.textColor,
-                          fontSize: MediaQuery.of(context).size.width / 17
+                    children: [
+                      TextSpan(
+                        text: "${lng["weather"]["myLocation"]}\n",
+                        style: GoogleFonts.montserrat(
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w400,
+                            color: preferences.selectedTheme.textColor,
+                            fontSize: MediaQuery.of(context).size.width / 17
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: weatherForecast.location,
-                      style: GoogleFonts.montserrat(
-                          letterSpacing: 1,
-                          fontWeight: FontWeight.w400,
-                          color: preferences.selectedTheme.textColor.withOpacity(0.7),
-                          fontSize: MediaQuery.of(context).size.width / 20
+                      TextSpan(
+                        text: weatherForecast.location,
+                        style: GoogleFonts.montserrat(
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w400,
+                            color: preferences.selectedTheme.textColor.withOpacity(0.7),
+                            fontSize: MediaQuery.of(context).size.width / 20
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: "\n${weatherForecast.dailyForecast[0].temperature}°\n",
-                      style: GoogleFonts.montserrat(
-                          letterSpacing: 2,
-                          fontWeight: FontWeight.w400,
-                          color: preferences.selectedTheme.textColor,
-                          fontSize: MediaQuery.of(context).size.width / 5
+                      TextSpan(
+                        text: "\n${weatherForecast.dailyForecast[0].temperature}°\n",
+                        style: GoogleFonts.montserrat(
+                            letterSpacing: 2,
+                            fontWeight: FontWeight.w400,
+                            color: preferences.selectedTheme.textColor,
+                            fontSize: MediaQuery.of(context).size.width / 5
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: WeatherForecast.getWeatherState(weatherForecast.dailyForecast[0].weatherCode),
-                      style: GoogleFonts.montserrat(
-                          letterSpacing: 1,
-                          fontWeight: FontWeight.w400,
-                          color: preferences.selectedTheme.textColor,
-                          fontSize: MediaQuery.of(context).size.width / 20
+                      TextSpan(
+                        text: WeatherForecast.getWeatherState(weatherForecast.dailyForecast[0].weatherCode),
+                        style: GoogleFonts.montserrat(
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w400,
+                            color: preferences.selectedTheme.textColor,
+                            fontSize: MediaQuery.of(context).size.width / 20
+                        ),
                       ),
-                    ),
-                  ]
+                    ]
                 ),
               ),
             ),
