@@ -7,6 +7,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:minilauncher/Pages/Home/Items/HomeOverlay.dart';
 import 'package:minilauncher/Pages/Home/Items/ApplicationItem.dart';
 
+import 'AppUsages/AppUsages.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -52,8 +54,11 @@ class _HomeState extends State<Home> {
 
             /// App list
             body: PageView(
+              controller: PageController(initialPage: 1),
               onPageChanged: (index) {},
               children: [
+
+                AppUsages(),
 
                 // Home page
                 Stack(

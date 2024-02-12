@@ -20,11 +20,11 @@ AppUsagesList(List formattedAppUsageList) {
               padding: const EdgeInsets.only(bottom: 5,top: 5),
               child: Row(
                 children: [
-                  Image.memory(
+                  formattedAppUsageList[index].appIcon != null ? Image.memory(
                     formattedAppUsageList[index].appIcon,
                     height: MediaQuery.of(context).size.width / 10,
                     width: MediaQuery.of(context).size.width / 10,
-                  ),
+                  ) : const SizedBox(),
                   const SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

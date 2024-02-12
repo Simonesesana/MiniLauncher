@@ -39,6 +39,7 @@ class _AppUsagesState extends State<AppUsages> {
 
     // grant usage permission - opens Usage Settings
 
+
     // check if usage permission is granted
 
 
@@ -54,6 +55,31 @@ class _AppUsagesState extends State<AppUsages> {
     List<AppUsageInfo> infoList =
     await AppUsage().getAppUsage(startDate, endDate);
 
+    for(AppUsageInfo app in infoList) {
+
+
+      // Search for the app icon
+      var appIcon;
+      for(var a in preferences.apps) {
+        if(a.packageName == app.packageName) {
+          appIcon = a.icon;
+        }
+      }
+
+      if(appIcon != null) {
+        totalAppUsage = totalAppUsage + app.usage.inMinutes;
+        formattedAppUsageList.add(FormattedUsageInfo(
+            appName: app.appName,
+            hours: app.usage.inHours.toInt(),
+            minutes: app.usage.inMinutes - app.usage.inHours.toInt() * 60,
+            appIcon: appIcon
+          )
+        );
+      }
+    }
+
+    setState(() {});
+
   }
 
   @override
@@ -65,31 +91,36 @@ class _AppUsagesState extends State<AppUsages> {
   @override
   Widget build(BuildContext context) {
     return isPermissionGranted ? SafeArea(
-      child: Column(
-        children: [
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.02
+        ),
+        child: Column(
+          children: [
 
-          // Title
-          Padding(
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height / 100,
-            ),
-            child: Text(
-              "Phone Usage",
-              style: GoogleFonts.montserrat(
-                  letterSpacing: 3,
-                  color: preferences.selectedTheme.textColor,
-                  fontSize: MediaQuery.of(context).size.width / 15
+            // Title
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 100,
+              ),
+              child: Text(
+                "Phone Usage",
+                style: GoogleFonts.montserrat(
+                    letterSpacing: 3,
+                    color: preferences.selectedTheme.textColor,
+                    fontSize: MediaQuery.of(context).size.width / 15
+                ),
               ),
             ),
-          ),
 
-          // Total usage
-          TotalAppUsage(totalAppUsage, context),
+            // Total usage
+            TotalAppUsage(totalAppUsage, context),
 
-          // Usage list
-          AppUsagesList(formattedAppUsageList)
-          
-        ],
+            // Usage list
+            AppUsagesList(formattedAppUsageList),
+
+          ],
+        ),
       ),
     ) : Stack(
       children: [
