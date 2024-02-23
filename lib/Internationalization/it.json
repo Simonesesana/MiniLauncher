@@ -2,11 +2,23 @@
 
   "generic": {
     "searchAnApp": "Cerca un'app",
-    "cancel": "Annulla"
+    "cancel": "Annulla",
+    "hrs": "ore",
+    "mins": "min"
   },
 
   "loading": {
     "mainText": "Cariamento, attendere..."
+  },
+
+  "home": {
+    "focusMode": {
+      "focusMode": "Modalità Focus",
+      "enableFocusMode": "Attiva modalità focus",
+      "focusModeDescription": "La modalià focus ti aiuta a concentrarti sulle cose importanti per un periodo di tempo prestabilito. Attivandola potrai aprire solamente le applicazioni presenti sulla schermata home.",
+      "disableFocusMode": "Disattiva modalità focus",
+      "disableFocusModeDescription": "Sei sicuro di voler disattivare la modalità focus?"
+    }
   },
 
   "settings": {
@@ -36,6 +48,16 @@
     "appDrawer": {
       "title": "App Drawer",
       "automaticallyOpenKeyboard": "Apri automaticamente la tastiera"
+    },
+    "focusMode": {
+      "title": "Modalità Focus",
+      "description": "Imposta la durata della modalità focus. Durante questo periodo potrai aprire solo le app presenti sulla schermata home.",
+      "focusModeDuration": "Tempo:"
+    },
+    "phoneUsage": {
+      "title": "Utilizzo del telefono",
+      "description": "Imposta il tempo massimo che vorresti passare al telefono ogni giorno.",
+      "screenTime": "Tempo:"
     },
     "restrictedApps": {
       "title": "App ristrette",
@@ -87,14 +109,18 @@
       "title": "Seleziona la tua lingua per iniziare:"
     },
     "page3": {
+      "title": "Seleziona le app da mostrare nella schermata home.",
+      "buttonText": "Seleziona"
+    },
+    "page4": {
       "title": "Concedi a Minilauncher l'accesso alla posizione per avere accesso alle previsioni meteo in tempo reale.",
       "buttonText": "Dai il permesso"
     },
-    "page4": {
+    "page5": {
       "title": "Ora imposta Minilauncher come launcher predefinito ed è fatta!",
       "buttonText": "Vai alle impostazioni"
     },
-    "page5": {
+    "page6": {
       "title": "Ecco fatto!",
       "subtitle": "Ora puoi iniziare a usare il tuo nuovo launcher!",
       "buttonText": "Inizia"

@@ -11,6 +11,7 @@ import 'Pages/Page2.dart';
 import 'Pages/Page3.dart';
 import 'Pages/Page4.dart';
 import 'Pages/Page5.dart';
+import 'Pages/Page6.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -50,14 +51,17 @@ class _WelcomePageState extends State<WelcomePage> {
               // Language selection page
               WelcomePage2(),
 
-              // Location permission page
+              // Favourite apps page
               WelcomePage3(),
 
-              // Set as default launcher page
+              // Location permission page
               WelcomePage4(),
 
+              // Set as default launcher page
+              WelcomePage5(),
+
               // Finish page
-              WelcomePage5()
+              WelcomePage6()
 
             ],
 
@@ -66,12 +70,12 @@ class _WelcomePageState extends State<WelcomePage> {
           // Dots
           Align(
             alignment: Alignment.bottomCenter,
-            child: currentPage != 4 ? Container(
+            child: currentPage != 5 ? Container(
               height: 40,
               color: Colors.transparent,
               child: Center(
                 child: ListView.builder(
-                  itemCount: 5,
+                  itemCount: 6,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
@@ -106,7 +110,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       horizontal: 15
                   ),
                   child: Text(
-                    lng["welcomePage"]["page5"]["buttonText"],
+                    lng["welcomePage"]["page6"]["buttonText"],
                     style: GoogleFonts.montserrat(
                         color: preferences.selectedTheme.primaryColor,
                         fontSize: MediaQuery.of(context).size.width / 27

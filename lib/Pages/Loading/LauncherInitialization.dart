@@ -68,6 +68,17 @@ Future<void> fetchSettingsPreferences () async {
     preferences.maxPhoneUsage = maxPhoneUsage.toDouble();
   }
 
+  int focusModeTimer = await getInt("focusModeTimer");
+  if(focusModeTimer != 0) {
+    preferences.focusModeTimer = focusModeTimer.toDouble();
+  }
+
+  String focusModeEnd = await getString("focusModeEnd");
+  if(focusModeEnd != "") {
+    preferences.focusModeEnd = DateTime.parse(focusModeEnd);
+    print("Focus mode end: ${preferences.focusModeEnd}");
+  }
+
   bool showSecondsOnClock = await getBool("showSecondsOnClock");
   preferences.showSecondsOnClock = showSecondsOnClock;
 

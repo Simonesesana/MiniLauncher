@@ -108,7 +108,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       Switch(
                         value: preferences.showRoundIcons,
                         inactiveTrackColor: Colors.transparent,
-                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showRoundIcons", value);
@@ -129,7 +130,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       Switch(
                         value: preferences.showBackgroundOnHomeScreen,
                         inactiveTrackColor: Colors.transparent,
-                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showBackgroundOnHomeScreen", value);
@@ -150,7 +152,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       Switch(
                         value: preferences.showSecondsOnClock,
                         inactiveTrackColor: Colors.transparent,
-                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showSecondsOnClock", value);
@@ -171,7 +174,8 @@ class _HomeScreenSettingsState extends State<HomeScreenSettings> {
                       Switch(
                         value: preferences.showDialerButtonOnHomeScreen,
                         inactiveTrackColor: Colors.transparent,
-                        activeColor: preferences.selectedTheme.textColor,                        onChanged: (value) {
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
                           setState(() {
                             widget.setHomePageHasChanged();
                             setBool("showDialerButtonOnHomeScreen", value);

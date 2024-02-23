@@ -2,11 +2,23 @@
 
   "generic": {
     "searchAnApp": "Search an app",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "hrs": "hrs",
+    "mins": "mins"
   },
 
-  "loading" : {
+  "loading": {
     "mainText": "Loading, please wait..."
+  },
+
+  "home": {
+    "focusMode": {
+      "focusMode": "Focus mode",
+      "enableFocusMode": "Enable focus mode",
+      "focusModeDescription": "Focus mode will improve your productivity for a fixed amount of time. During this time, you can only open the apps available on the home screen.",
+      "disableFocusMode": "Disable focus mode",
+      "disableFocusModeDescription": "Are you sure you want to disable focus mode?"
+    }
   },
 
   "settings": {
@@ -36,6 +48,16 @@
     "appDrawer": {
       "title": "App Drawer",
       "automaticallyOpenKeyboard": "Automatically open drawer keyboard"
+    },
+    "focusMode": {
+      "title": "Focus Mode",
+      "description": "Set the timer for the focus mode. When the timer runs out, the focus mode will be disabled and you can open any app again.",
+      "focusModeDuration": "Timer:"
+    },
+    "phoneUsage": {
+      "title": "Phone Usage",
+      "description": "Set the preferred amount of time you want to spend on your phone daily.",
+      "screenTime": "Screen time:"
     },
     "restrictedApps": {
       "title": "Restricted Apps",
@@ -87,14 +109,18 @@
       "title": "Select your language to start:"
     },
     "page3": {
+      "title": "Select the apps you want to be displayed on the home screen.",
+      "buttonText": "Select apps"
+    },
+    "page4": {
       "title": "Grant Minilauncher location access to view live weather forecast data.",
       "buttonText": "Grant location access"
     },
-    "page4": {
+    "page5": {
       "title": "Now set MiniLauncher as your default launcher and enjoy!",
       "buttonText": "Go to settings"
     },
-    "page5": {
+    "page6": {
       "title": "You're all set!",
       "subtitle": "Now you can start to use your new launcher!",
       "buttonText": "Finish"

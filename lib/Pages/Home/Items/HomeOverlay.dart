@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:minilauncher/Preferences/Preferences.dart';
 
 import '../../../main.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Pages/Settings/Settings.dart';
+import 'package:minilauncher/Internationalization/Locale.dart';
 import 'package:minilauncher/Pages/Home/Drawer/HomeDrawer.dart';
 
 class HomeOverlay extends StatefulWidget {
@@ -23,6 +25,143 @@ class _HomeOverlayState extends State<HomeOverlay> {
 
   // Current date
   DateTime currentDateTime = DateTime.now();
+
+  // Function to enable focus mode
+  void enableFocusMode() {
+
+    // Add time to the focus mode
+    preferences.focusModeEnd = DateTime.now().add(Duration(minutes: preferences.focusModeTimer.toInt()));
+
+    // Save the preferences
+    setString("focusModeEnd", DateTime.now().add(Duration(minutes: preferences.focusModeTimer.toInt())).toString());
+
+    setState(() {});
+
+  }
+
+  // Function to disable focus mode before the time ends
+  void disableFocusMode() {
+
+    // Show dialog to confirm
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: preferences.selectedTheme.primaryColor.withOpacity(0.5),
+            title: Text(
+              lng["home"]["focusMode"]["disableFocusMode"],
+              style: GoogleFonts.montserrat(
+                  fontSize: MediaQuery.of(context).size.width / 20,
+                  color: preferences.selectedTheme.textColor
+              ),
+            ),
+            content: Text(
+              lng["home"]["focusMode"]["disableFocusModeDescription"],
+              textAlign: TextAlign.justify,
+              style: GoogleFonts.montserrat(
+                  color: preferences.selectedTheme.textColor
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  lng["generic"]["cancel"],
+                  style: GoogleFonts.montserrat(
+                      color: preferences.selectedTheme.textColor
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+
+                  // Remove the time from the focus mode
+                  preferences.focusModeEnd = DateTime.now().subtract(const Duration(minutes: 1));
+
+                  // Save the preferences
+                  setString("focusModeEnd", DateTime.now().subtract(const Duration(minutes: 1)).toString());
+
+                  setState(() {});
+
+                  Navigator.pop(context);
+
+                },
+                child: Text(
+                  "Ok",
+                  style: GoogleFonts.montserrat(
+                      color: Colors.red
+                  ),
+                ),
+              )
+            ],
+          );
+        }
+    );
+
+  }
+
+  // Function to launch focus mode
+  void activateFocusMode() {
+
+    // If the focus mode is already enabled then return
+    if(!preferences.focusModeEnd.difference(DateTime.now()).inSeconds.isNegative) {
+      disableFocusMode();
+      return;
+    }
+
+    // Show dialog to confirm
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: preferences.selectedTheme.primaryColor.withOpacity(0.5),
+          title: Text(
+            lng["home"]["focusMode"]["enableFocusMode"],
+            style: GoogleFonts.montserrat(
+              fontSize: MediaQuery.of(context).size.width / 20,
+              color: preferences.selectedTheme.textColor
+            ),
+          ),
+          content: Text(
+            lng["home"]["focusMode"]["focusModeDescription"],
+            textAlign: TextAlign.justify,
+            style: GoogleFonts.montserrat(
+              color: preferences.selectedTheme.textColor
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                lng["generic"]["cancel"],
+                style: GoogleFonts.montserrat(
+                  color: Colors.red
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                // Enable focus mode
+                enableFocusMode();
+                Navigator.pop(context);
+              },
+              child: Text(
+                "Ok",
+                style: GoogleFonts.montserrat(
+                  color: preferences.selectedTheme.textColor
+                ),
+              ),
+            )
+          ],
+        );
+      }
+    );
+
+  }
 
   void updateDate() {
     dateTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -102,91 +241,134 @@ class _HomeOverlayState extends State<HomeOverlay> {
           ),
 
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
 
-              /// App Drawer
+              /// Focus mode
               GestureDetector(
-                onTap: (){
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      child: const HomeDrawer(),
-                      type: PageTransitionType.fade
-                    )
-                  );
+                onTap: () {
+                  activateFocusMode();
                 },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(
-                          width: 1,
-                          color: preferences.selectedTheme.textColor
-                      ),
-                      borderRadius: BorderRadius.circular(100)
-                  ),
-                  child: Icon(
-                    Icons.keyboard_arrow_up,
-                    color: preferences.selectedTheme.textColor,
-                  ),
-                ),
-              ),
-
-              const SizedBox(width: 10),
-
-              /// Dialer
-              GestureDetector(
-                onTap: () async {
-                  await launchUrl(Uri.parse('tel:'));
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(
-                          width: 1,
-                          color: preferences.selectedTheme.textColor
-                      ),
-                      borderRadius: BorderRadius.circular(100)
-                  ),
-                  child: Icon(
-                    Icons.phone,
-                    color: preferences.selectedTheme.textColor,
-                  ),
-                ),
-              ),
-
-              const SizedBox(width: 10),
-
-              /// Settings
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          child: const Settings(),
-                          type: PageTransitionType.fade
-                      )
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    border: Border.all(
-                      width: 1,
+                child: Card(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
                       color: preferences.selectedTheme.textColor
                     ),
-                    borderRadius: BorderRadius.circular(100)
+                    borderRadius: BorderRadius.circular(20)
                   ),
-                  child: Icon(
-                    Icons.settings,
-                    color: preferences.selectedTheme.textColor,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 15
+                    ),
+                    child: preferences.focusModeEnd.difference(DateTime.now()).inSeconds.isNegative ? Text(
+                      lng["home"]["focusMode"]["focusMode"],
+                      style: GoogleFonts.montserrat(
+                        color: preferences.selectedTheme.textColor,
+                      ),
+                    ) : Text(
+                      "${preferences.focusModeEnd.difference(DateTime.now()).inHours.toString().padLeft(2, "0")}"
+                      ":${(preferences.focusModeEnd.difference(DateTime.now()).inMinutes - preferences.focusModeEnd.difference(DateTime.now()).inHours * 60).toString().padLeft(2, "0")}"
+                      ":${(preferences.focusModeEnd.difference(DateTime.now()).inSeconds - preferences.focusModeEnd.difference(DateTime.now()).inMinutes * 60).toString().padLeft(2, "0")}",
+                      style: GoogleFonts.montserrat(
+                        color: preferences.selectedTheme.textColor,
+                      ),
+                    ),
                   ),
                 ),
               ),
 
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+
+                  /// App Drawer
+                  preferences.focusModeEnd.difference(DateTime.now()).inSeconds.isNegative ? GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: const HomeDrawer(),
+                          type: PageTransitionType.fade
+                        )
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          border: Border.all(
+                              width: 1,
+                              color: preferences.selectedTheme.textColor
+                          ),
+                          borderRadius: BorderRadius.circular(100)
+                      ),
+                      child: Icon(
+                        Icons.keyboard_arrow_up,
+                        color: preferences.selectedTheme.textColor,
+                      ),
+                    ),
+                  ) : const SizedBox(),
+
+                  const SizedBox(width: 10),
+
+                  /// Dialer
+                  GestureDetector(
+                    onTap: () async {
+                      await launchUrl(Uri.parse('tel:'));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          border: Border.all(
+                              width: 1,
+                              color: preferences.selectedTheme.textColor
+                          ),
+                          borderRadius: BorderRadius.circular(100)
+                      ),
+                      child: Icon(
+                        Icons.phone,
+                        color: preferences.selectedTheme.textColor,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 10),
+
+                  /// Settings
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: const Settings(),
+                              type: PageTransitionType.fade
+                          )
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        border: Border.all(
+                          width: 1,
+                          color: preferences.selectedTheme.textColor
+                        ),
+                        borderRadius: BorderRadius.circular(100)
+                      ),
+                      child: Icon(
+                        Icons.settings,
+                        color: preferences.selectedTheme.textColor,
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
             ],
           )
 

@@ -19,10 +19,8 @@ class _HomeState extends State<Home> {
 
   bool isLoading = true;
 
-
   /// Function to detect if the page is loading
   void detectLoading(Timer timer) {
-
     if(preferences.apps.isNotEmpty){
       setState(() {isLoading = false;});
       timer.cancel();
@@ -42,10 +40,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
+    return PopScope(
+      canPop: false,
       child: SafeArea(
         child: Scaffold(
 

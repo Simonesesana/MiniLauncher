@@ -52,14 +52,18 @@ class _LoadingState extends State<Loading> {
     /// Fetches launcher language
     await Lng.initializeLanguage();
 
-    /// Fetches app theme
-    await fetchAppTheme();
+    if(!firstAccess) {
 
-    /// Fetches favourite apps
-    await fetchFavouriteApps();
+      /// Fetches app theme
+      await fetchAppTheme();
 
-    /// Fetches settings preferences
-    await fetchSettingsPreferences();
+      /// Fetches favourite apps
+      await fetchFavouriteApps();
+
+      /// Fetches settings preferences
+      await fetchSettingsPreferences();
+
+    }
 
     /// App list recovery
     initializeAppList();

@@ -31,13 +31,19 @@ class PreferencesClass {
   /// Max phone usage
   double maxPhoneUsage = 120;
 
+  /// Focus mode timer in minutes
+  double focusModeTimer = 30;
+
   /// Settings variables
-  late bool showRoundIcons;
-  late bool showSecondsOnClock;
-  late bool showBackgroundOnHomeScreen;
-  late bool showDialerButtonOnHomeScreen;
-  late bool showOnlyFavouriteAppsOnHomeScreen;
-  late bool automaticallyOpenKeyboardOnAppDrawer;
+  bool showRoundIcons = false;
+  bool showSecondsOnClock = true;
+  bool showBackgroundOnHomeScreen = false;
+  bool showDialerButtonOnHomeScreen = false;
+  bool showOnlyFavouriteAppsOnHomeScreen = true;
+  bool automaticallyOpenKeyboardOnAppDrawer = false;
+
+  /// Focus mode
+  DateTime focusModeEnd = DateTime.now().subtract(const Duration(minutes: 1));
 
   /// Sets an app as favourite
   static addFavouriteApp(String appName, String packageName, var icon) {
