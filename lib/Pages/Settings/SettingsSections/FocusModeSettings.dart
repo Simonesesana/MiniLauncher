@@ -72,6 +72,27 @@ class _FocusModeSettingsState extends State<FocusModeSettings> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      settingsTextLabel(lng["settings"]["focusMode"]["showFocusModeButton"], screenWidth),
+                      Switch(
+                        value: preferences.showFocusModeButtonOnHomeScreen,
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
+                          setState(() {
+                            widget.setHomePageHasChanged();
+                            setBool("showFocusModeButtonOnHomeScreen", value);
+                            preferences.showFocusModeButtonOnHomeScreen = value;
+                          });
+                        },
+                      ),
+
+                    ],
+                  ),
+
                   Padding(
                       padding: const EdgeInsets.only(
                           top: 10

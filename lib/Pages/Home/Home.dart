@@ -1,12 +1,12 @@
 import 'dart:async';
-import 'package:minilauncher/Pages/Home/Weather/Weather.dart';
-
 import '../../main.dart';
+import 'AppUsages/AppUsages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'AppUsages/AppUsages.dart';
+import 'package:minilauncher/Pages/Home/Weather/Weather.dart';
 import 'package:minilauncher/Pages/Home/Items/HomeOverlay.dart';
 import 'package:minilauncher/Pages/Home/Items/ApplicationItem.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

@@ -47,7 +47,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: preferences.selectedTheme.primaryColor.withOpacity(0.5),
+            backgroundColor: preferences.selectedTheme.primaryColor,
             title: Text(
               lng["home"]["focusMode"]["disableFocusMode"],
               style: GoogleFonts.montserrat(
@@ -245,7 +245,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
             children: [
 
               /// Focus mode
-              GestureDetector(
+              preferences.showFocusModeButtonOnHomeScreen ? GestureDetector(
                 onTap: () {
                   activateFocusMode();
                 },
@@ -278,7 +278,7 @@ class _HomeOverlayState extends State<HomeOverlay> {
                     ),
                   ),
                 ),
-              ),
+              ) : const SizedBox(),
 
 
               Row(

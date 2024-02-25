@@ -52,7 +52,8 @@
     "focusMode": {
       "title": "Modalità Focus",
       "description": "Imposta la durata della modalità focus. Durante questo periodo potrai aprire solo le app presenti sulla schermata home.",
-      "focusModeDuration": "Tempo:"
+      "focusModeDuration": "Durata focus:",
+      "showFocusModeButton": "Mostra pulsante modalità focus sulla schermata home"
     },
     "phoneUsage": {
       "title": "Utilizzo del telefono",

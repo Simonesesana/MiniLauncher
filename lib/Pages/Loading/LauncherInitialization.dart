@@ -79,6 +79,9 @@ Future<void> fetchSettingsPreferences () async {
     print("Focus mode end: ${preferences.focusModeEnd}");
   }
 
+  bool showFocusModeButtonOnHomeScreen = await getBool("showFocusModeButtonOnHomeScreen");
+  preferences.showFocusModeButtonOnHomeScreen = showFocusModeButtonOnHomeScreen;
+
   bool showSecondsOnClock = await getBool("showSecondsOnClock");
   preferences.showSecondsOnClock = showSecondsOnClock;
 

@@ -39,6 +39,7 @@ class PreferencesClass {
   bool showSecondsOnClock = true;
   bool showBackgroundOnHomeScreen = false;
   bool showDialerButtonOnHomeScreen = false;
+  bool showFocusModeButtonOnHomeScreen = true;
   bool showOnlyFavouriteAppsOnHomeScreen = true;
   bool automaticallyOpenKeyboardOnAppDrawer = false;
 

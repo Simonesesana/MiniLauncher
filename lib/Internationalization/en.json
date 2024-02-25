@@ -52,7 +52,8 @@
     "focusMode": {
       "title": "Focus Mode",
       "description": "Set the timer for the focus mode. When the timer runs out, the focus mode will be disabled and you can open any app again.",
-      "focusModeDuration": "Timer:"
+      "focusModeDuration": "Focus time:",
+      "showFocusModeButton": "Show focus mode button on home screen"
     },
     "phoneUsage": {
       "title": "Phone Usage",

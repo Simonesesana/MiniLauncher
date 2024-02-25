@@ -9,14 +9,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.3"
-  app_usage:
-    dependency: "direct main"
-    description:
-      name: app_usage
-      sha256: "6e387c9dbf1a7232e43d1a65edfd077c0fffd4460e2cec86555c2428787cf511"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.1"
   async:
     dependency: transitive
     description:

@@ -1,5 +1,5 @@
-import 'package:app_usage/app_usage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minilauncher/Pages/Home/AppUsages/TotalAppUsage.dart';
@@ -29,6 +29,9 @@ class AppUsages extends StatefulWidget {
 
 class _AppUsagesState extends State<AppUsages> {
 
+  // Method channel
+  static const platform = MethodChannel("com.simon.minilauncher/test");
+
   // App Usage Info
   int totalAppUsage = 0;
   List<FormattedUsageInfo> formattedAppUsageList =  [];
@@ -39,45 +42,42 @@ class _AppUsagesState extends State<AppUsages> {
   // Function to get app usages
   Future<void> getAppUsage() async {
 
-    // get all app usage info from today
-    DateTime endDate = DateTime.now();
-    DateTime startDate = DateTime(
-      DateTime.now().year,
-      DateTime.now().month,
-      DateTime.now().day,
-      0, 0, 0
-    );
+    var infoList = await platform.invokeMethod('getAppUsageList');
 
-    List<AppUsageInfo> infoList =
-    await AppUsage().getAppUsage(startDate, endDate);
 
-    for(AppUsageInfo app in infoList) {
+    for(var app in infoList) {
 
+      print(app);
 
       // Search for the app icon
+      var appName;
       var appIcon;
       for(var a in preferences.apps) {
-        if(a.packageName == app.packageName) {
+        if(a.packageName == app["packageName"]) {
           appIcon = a.icon;
+          appName = a.appName;
         }
       }
 
+      print(app["usageTimeInMinutes"]);
+
       if(appIcon != null) {
-        totalAppUsage = totalAppUsage + app.usage.inMinutes;
+        totalAppUsage = totalAppUsage + int.parse(app["usageTimeInMinutes"].toString());
+        int _appUsage = int.parse(app["usageTimeInMinutes"].toString());
         formattedAppUsageList.add(FormattedUsageInfo(
-            appName: app.appName,
-            hours: app.usage.inHours.toInt(),
-            minutes: app.usage.inMinutes - app.usage.inHours.toInt() * 60,
+            appName: appName.toString(),
+            hours: _appUsage ~/ 60,
+            minutes: _appUsage - (_appUsage ~/ 60) * 60,
             appIcon: appIcon,
-            totalUsageInMinutes: app.usage.inMinutes
+            totalUsageInMinutes: _appUsage
           )
         );
       }
+
     }
 
     // Ordering the results based on the time usage
     formattedAppUsageList.sort((b, a) => a.totalUsageInMinutes.compareTo(b.totalUsageInMinutes));
-    //formattedAppUsageList = formattedAppUsageList.reversed.toList();
 
     setState(() {});
 

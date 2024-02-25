@@ -112,7 +112,6 @@ class _SettingsState extends State<Settings> {
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.only(
-              top: screenWidth / 30,
               left: screenWidth / 20,
               right: screenWidth / 20
             ),
@@ -122,6 +121,8 @@ class _SettingsState extends State<Settings> {
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
+
+                  const SizedBox(height: 20),
 
                   ThemeSettings(
                       setHomePageHasChanged: setHomePageHasChanged
