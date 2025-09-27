@@ -31,6 +31,7 @@ dependencies:
   http: ^1.2.0
   permission_handler: ^11.2.1
   system_settings: ^2.1.0
+  contacts_service: ^0.6.3
 
 
 

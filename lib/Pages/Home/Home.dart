@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:minilauncher/Pages/Home/Contacts/Contacts.dart';
 import '../../main.dart';
-import 'AppUsages/AppUsages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:minilauncher/Pages/Home/Weather/Weather.dart';
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
               onPageChanged: (index) {},
               children: [
 
-                const AppUsages(),
+                const Contacts(),
 
                 // Home page
                 Stack(
