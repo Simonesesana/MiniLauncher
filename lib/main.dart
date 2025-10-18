@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:minilauncher/Packages/Preferences/PreferencesClass.dart';
+import 'package:minilauncher/Pages/WelcomePage/WelcomePage.dart';
+
+// Pages
+import 'Pages/Home/Home.dart';
+import 'package:minilauncher/Pages/Loading/Loading.dart';
+
+PreferencesClass preferences = PreferencesClass();
 
 void main() async {
 
@@ -29,13 +37,14 @@ class MyApp extends StatelessWidget {
       title: 'MiniLauncher',
 
       /// Initial route
-      initialRoute: '/home',
+      initialRoute: '/loading',
 
         routes: {
-          //'/home': (context) => const Home(),
+          '/home': (context) => const Home(),
+          '/loading': (context) => const Loading(),
+          '/welcome_page': (context) => const WelcomePage(),
         }
 
-
-        );
+      );
   }
 }
