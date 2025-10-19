@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:minilauncher/Packages/Preferences/Preferences.dart';
 import 'package:minilauncher/Packages/Theme.dart';
+import 'package:minilauncher/Packages/WeatherForecast.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:minilauncher/Pages/Loading/LauncherInitialization.dart';
+
+import '../../Packages/Contacts.dart';
 
 
 
@@ -63,11 +66,13 @@ class _LoadingState extends State<Loading> {
     /// App list recovery
     initializeAppList();
 
-    // Gets weather forecast
-    /*
+    /// Fetches favourite contacts
+    Contacts.fetchContacts();
+
+    /// Gets weather forecast
     if(!firstAccess) {
       weatherForecast.getWeatherForecast();
-    }*/
+    }
 
     if(context.mounted && !firstAccess) {
       Navigator.pushReplacementNamed(context, '/home');

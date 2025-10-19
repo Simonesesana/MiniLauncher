@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:minilauncher/Packages/Contacts.dart';
 import 'package:minilauncher/Packages/Preferences/Preferences.dart';
 import 'package:minilauncher/main.dart';
 
@@ -10,6 +11,7 @@ import 'Pages/Page2.dart';
 import 'Pages/Page3.dart';
 import 'Pages/Page4.dart';
 import 'Pages/Page5.dart';
+import 'Pages/Page6.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -52,11 +54,14 @@ class _WelcomePageState extends State<WelcomePage> {
               // Location permission page
               WelcomePage3(),
 
-              // Set as default launcher page
+              // Contacts permission page
               WelcomePage4(),
 
+              // Set as default launcher page
+              WelcomePage5(),
+
               // Finish page
-              WelcomePage5()
+              WelcomePage6()
 
             ],
 
@@ -65,7 +70,7 @@ class _WelcomePageState extends State<WelcomePage> {
           // Dots
           Align(
             alignment: Alignment.bottomCenter,
-            child: currentPage != 4 ? Container(
+            child: currentPage != 5 ? Container(
               height: 40,
               color: Colors.transparent,
               child: Center(
@@ -96,6 +101,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ) : GestureDetector(
               onTap: () {
                 setBool("first_access", false);
+                Contacts.fetchContacts();
                 Navigator.pushReplacementNamed(context, '/home');
               },
               child: Card(

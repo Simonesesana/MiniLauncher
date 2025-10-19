@@ -29,9 +29,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
   TextEditingController searchBarController = TextEditingController();
 
   /// This function determines if the app is being searched in the search bar
-  bool isSearched(String appName) {
+  bool isSearched(String name) {
 
-    if(searchText=="" || appName.toLowerCase().contains(searchText.toLowerCase())){
+    if(searchText=="" || name.toLowerCase().contains(searchText.toLowerCase())){
       return true;
     }
     return false;
@@ -54,10 +54,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
   void checkIfOpenApp() {
     String text = searchText;
     if(preferences.apps.where(
-            (app) => app.appName.toString().toLowerCase().contains(searchText)
+            (app) => app.name.toString().toLowerCase().contains(searchText)
     ).length == 1){
       var app = preferences.apps.where(
-              (app) => app.appName.toString().toLowerCase().contains(searchText)
+              (app) => app.name.toString().toLowerCase().contains(searchText)
       ).toList()[0];
       if(!preferences.restrictedPackages.contains(app.packageName)) {
         setState(() {
@@ -65,7 +65,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           searchBarController.clear();
         });
         InstalledApps.startApp(
-            preferences.apps.where((app) => app.appName.toString().toLowerCase().contains(text)).toList()[0].packageName);
+            preferences.apps.where((app) => app.name.toString().toLowerCase().contains(text)).toList()[0].packageName);
        }
     }
   }
@@ -160,7 +160,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         itemCount: preferences.apps.length,
                         itemBuilder: (context, index){
                           try{
-                            if(preferences.apps[index].appName[0].toString().toUpperCase() != preferences.apps[index-1].appName[0].toString().toUpperCase()) {
+                            if(preferences.apps[index].name[0].toString().toUpperCase() != preferences.apps[index-1].name[0].toString().toUpperCase()) {
                               return ApplicationItemWithLetter(index);
                             }
                           } catch(e) {
@@ -169,9 +169,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
                           return AnimationConfiguration.staggeredList(
                             position: index,
                             child: FadeInAnimation(
-                                child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                                child: isSearched(preferences.apps[index].name) ? ApplicationItem(
                                     context,
-                                    preferences.apps[index].appName,
+                                    preferences.apps[index].name,
                                     preferences.apps[index].packageName,
                                     preferences.apps[index].icon
                                 ) : const SizedBox()
@@ -212,7 +212,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               position: index,
               child: FadeInAnimation(
                 child: Text(
-                    preferences.apps[index].appName[0].toString().toUpperCase(),
+                    preferences.apps[index].name[0].toString().toUpperCase(),
                     style: GoogleFonts.montserrat(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -227,9 +227,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
             AnimationConfiguration.staggeredList(
               position: index,
               child: FadeInAnimation(
-                  child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+                  child: isSearched(preferences.apps[index].name) ? ApplicationItem(
                       context,
-                      preferences.apps[index].appName,
+                      preferences.apps[index].name,
                       preferences.apps[index].packageName,
                       preferences.apps[index].icon
                   ) : const SizedBox()
@@ -240,18 +240,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ) : AnimationConfiguration.staggeredList(
         position: index,
         child: FadeInAnimation(
-            child: isSearched(preferences.apps[index].appName) ? ApplicationItem(
+            child: isSearched(preferences.apps[index].name) ? ApplicationItem(
                 context,
-                preferences.apps[index].appName,
+                preferences.apps[index].name,
                 preferences.apps[index].packageName,
                 preferences.apps[index].icon
             ) : const SizedBox()
         ),
       );
     } catch (e) {
-      return isSearched(preferences.apps[index].appName) ? ApplicationItem(
+      return isSearched(preferences.apps[index].name) ? ApplicationItem(
           context,
-          preferences.apps[index].appName,
+          preferences.apps[index].name,
           preferences.apps[index].packageName,
           preferences.apps[index].icon
       ) : const SizedBox();
