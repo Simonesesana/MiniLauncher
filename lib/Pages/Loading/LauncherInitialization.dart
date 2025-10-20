@@ -30,7 +30,7 @@ Future<void> initializeAppList (
 Future<void> fetchAppList() async {
 
   /// Retrieves the app list
-  preferences.apps = await InstalledApps.getInstalledApps(false, true);
+  preferences.apps = await InstalledApps.getInstalledApps(true, true);
 
   /// Retrieves the restricted apps
   List<String> restrictedApps = await getStringList("restricted_apps");
