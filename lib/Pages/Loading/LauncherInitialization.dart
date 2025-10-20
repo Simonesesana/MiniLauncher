@@ -71,7 +71,6 @@ Future<void> fetchSettingsPreferences () async {
   String focusModeEnd = await getString("focusModeEnd");
   if(focusModeEnd != "") {
     preferences.focusModeEnd = DateTime.parse(focusModeEnd);
-    print("Focus mode end: ${preferences.focusModeEnd}");
   }
 
   bool showFocusModeButtonOnHomeScreen = await getBool("showFocusModeButtonOnHomeScreen");
@@ -88,6 +87,9 @@ Future<void> fetchSettingsPreferences () async {
 
   bool automaticallyOpenKeyboardOnAppDrawer = await getBool("automaticallyOpenKeyboardOnAppDrawer");
   preferences.automaticallyOpenKeyboardOnAppDrawer = automaticallyOpenKeyboardOnAppDrawer;
+
+  bool callContactsOnTap = await getBool("callContactsOnTap");
+  preferences.callContactsOnTap = callContactsOnTap;
 
 }
 

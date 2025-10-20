@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:minilauncher/Packages/Preferences/Preferences.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:minilauncher/Pages/Settings/SettingsWidgets.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/AppSelection/SelectFavouriteContacts.dart';
 
-class FavouriteContactsSettings extends StatefulWidget {
+class ContactsSettings extends StatefulWidget {
 
-  FavouriteContactsSettings({super.key});
+  ContactsSettings({super.key});
 
   @override
-  State<FavouriteContactsSettings> createState() => _FavouriteContactsSettingsState();
+  State<ContactsSettings> createState() => _ContactsSettingsState();
 }
 
-class _FavouriteContactsSettingsState extends State<FavouriteContactsSettings> {
+class _ContactsSettingsState extends State<ContactsSettings> {
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +96,30 @@ class _FavouriteContactsSettingsState extends State<FavouriteContactsSettings> {
                                 child: const SelectFavouriteContacts(),
                               )
                           );
+                        },
+                      ),
+
+                    ],
+                  ),
+
+                  /// Divider
+                  settingsDivider(screenWidth),
+
+                  /// Automatically call contacts on tap
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      settingsTextLabel("Call contacts on tap", screenWidth),
+                      Switch(
+                        value: preferences.callContactsOnTap,
+                        inactiveTrackColor: Colors.transparent,
+                        activeColor: preferences.selectedTheme.textColor,
+                        onChanged: (value) {
+                          setState(() {
+                            setBool("callContactsOnTap", value);
+                            preferences.callContactsOnTap = value;
+                          });
                         },
                       ),
 

@@ -47,6 +47,7 @@ dependencies:
   weather_icons: ^3.0.0
   geolocator: ^14.0.2
   flutter_contacts: ^1.1.9+2
+  flutter_phone_direct_caller: ^2.2.1
 
 dev_dependencies:
   flutter_test:

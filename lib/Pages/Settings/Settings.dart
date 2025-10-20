@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minilauncher/Pages/Settings/SettingsSections/FavouriteContactsSettings.dart';
+import 'package:minilauncher/Pages/Settings/SettingsSections/ContactsSettings.dart';
 import 'package:minilauncher/Pages/Settings/SettingsSections/FocusModeSettings.dart';
 import 'package:minilauncher/main.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -160,7 +160,7 @@ class _SettingsState extends State<Settings> {
 
                   const SizedBox(height: 20),
 
-                  FavouriteContactsSettings(),
+                  ContactsSettings(),
 
                   const SizedBox(height: 20)
 

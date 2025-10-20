@@ -44,6 +44,7 @@ class PreferencesClass {
   bool showFocusModeButtonOnHomeScreen = true;
   bool showOnlyFavouriteAppsOnHomeScreen = true;
   bool automaticallyOpenKeyboardOnAppDrawer = false;
+  bool callContactsOnTap = false;
 
   /// Focus mode
   DateTime focusModeEnd = DateTime.now().subtract(const Duration(minutes: 1));

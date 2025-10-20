@@ -66,12 +66,14 @@ class _LoadingState extends State<Loading> {
     /// App list recovery
     initializeAppList();
 
-    /// Fetches favourite contacts
-    Contacts.fetchContacts();
-
-    /// Gets weather forecast
     if(!firstAccess) {
+
+      /// Fetches weather forecast
       weatherForecast.getWeatherForecast();
+
+      /// Fetches favourite contacts
+      Contacts.fetchContacts();
+
     }
 
     if(context.mounted && !firstAccess) {

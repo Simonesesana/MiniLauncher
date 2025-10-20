@@ -19,6 +19,12 @@ class _HomeState extends State<Home> {
 
   bool isLoading = true;
 
+  // Page controller
+  final PageController _pageController = PageController(
+    initialPage: 1,
+    keepPage: true,
+  );
+
   /// Function to detect if the page is loading
   void detectLoading(Timer timer) {
     if(preferences.apps.isNotEmpty){
@@ -42,6 +48,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
+      onPopInvokedWithResult: (didPop, result)  {
+        _pageController.animateToPage(
+          1,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+        );
+      },
       child: SafeArea(
         child: Scaffold(
 
@@ -49,7 +62,7 @@ class _HomeState extends State<Home> {
 
             /// App list
             body: PageView(
-              controller: PageController(initialPage: 1),
+              controller: _pageController,
               onPageChanged: (index) {},
               children: [
 
